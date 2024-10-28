@@ -818,8 +818,8 @@ connection.once('open', () => {
 
 
 // Middleware
-app.use(cors());
-//app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
+//app.use(cors());
+app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 app.use(express.json());
 app.use(bodyParser.json());
 
