@@ -1,0 +1,112 @@
+.offcampus-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the content is vertically centered within the viewport */
+    padding: 20px;
+}
+
+.offcampus-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limit the grid width for better centering */
+}
+
+/* Laptop View */
+@media only screen and (min-width: 1024px) {
+    .job-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .job-card {
+        border: 2px dashed #cfcfcf;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .job-card:hover {
+        transform: scale(1.05);
+    }
+
+    .job-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .job-title {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #333;
+    }
+}
+
+/* Tablet View */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .job-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .job-card {
+        border: 2px dashed #cfcfcf;
+        padding: 8px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .job-card:hover {
+        transform: scale(1.05);
+    }
+
+    .job-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .job-title {
+        font-size: 16px;
+        margin-top: 8px;
+        color: #333;
+    }
+}
+
+/* Mobile View */
+@media only screen and (max-width: 767px) {
+    .job-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .job-card {
+        border: 2px dashed #cfcfcf;
+        padding: 5px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .job-title {
+        font-size: 14px;
+        margin-top: 5px;
+        color: #333;
+    }
+}
