@@ -22,7 +22,7 @@ const Home = () => {
         const fetchJobs = async () => {
             try {
                 setLoading(true); // Start loading
-                const response = await axios.get(`https://job-hustle.onrender.com/api/home`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
                 const jobsData = response.data;
 
                 // Group jobs by jobType, but exclude 'Other' jobs
