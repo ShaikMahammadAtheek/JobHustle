@@ -207,12 +207,18 @@
     }
     .job-type-card {
         width: 100%;
-        flex-direction: column; /* Set the direction to column */
+        flex-direction: column;
         height: auto;
+    }
+    .job-type-link {
+        flex-direction: column; /* Set the direction to column */
+        align-items: center;   /* Center align items in column layout */
+        padding: 10px;         /* Add padding for better spacing */
     }
     .job-type-title {
         font-size: 16px;
         text-align: center;
+        margin-top: 10px;      /* Add margin for spacing below image */
     }
     .job-type-image {
         width: 100%;
