@@ -102,8 +102,7 @@
 }
 .job-type-heading {
     background-color: rgb(56, 61, 61);
-    width: 100%;
-    height: 65px;
+    height: 50px;
     align-items: center;
     font-size: 30px;
     color: white;
@@ -127,7 +126,7 @@
 }
 .job-type-link {
    display: flex;
-   background-color: rgb(207, 241, 252);
+   background-color: rgb(219, 245, 243);
    align-items: center;
    width: 100%;
    height: 187px;
@@ -213,7 +212,7 @@
     .job-type-link {
         flex-direction: column; /* Set the direction to column */
         align-items: center;   /* Center align items in column layout */
-        padding: 10px;         /* Add padding for better spacing */
+        height: 295px;
     }
     .job-type-title {
         font-size: 16px;
@@ -222,7 +221,7 @@
     }
     .job-type-image {
         width: 100%;
-        height: auto;
+        height: 250px;
         border-radius: 10px;
     }
 }
