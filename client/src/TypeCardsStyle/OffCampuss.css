@@ -80,7 +80,7 @@
 
 
 
-/* Base styles (provided by you) */
+/* Base styles */
 .offcampus-container {
     margin: 0px;
     padding: 0px;
@@ -207,8 +207,8 @@
     }
     .job-type-card {
         width: 100%;
+        flex-direction: column; /* Set the direction to column */
         height: auto;
-        flex-direction: column; /* Stacks content vertically */
     }
     .job-type-title {
         font-size: 16px;

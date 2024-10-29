@@ -54,7 +54,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../TypeCardsStyle/OffCampuss.css'; // Make sure your CSS file is correct
 import { Link } from 'react-router-dom';
-// import './OffCampuss.css'
+
 const OffCampuss = () => {
     const [jobs, setJobs] = useState([]);
 
