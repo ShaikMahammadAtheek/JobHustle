@@ -851,6 +851,7 @@ const paginate = (req) => {
   return { limit, skip: (page - 1) * limit };
 };
 
+
 // Route to fetch all jobs (with pagination) and display the newest ones first (for Home page)
 app.get('/api/home', async (req, res) => {
   const { limit, skip } = paginate(req);
@@ -990,6 +991,18 @@ app.use('/api/feedback', feedbackRoutes);
 //   }
 // });
 
+
+
+
+app.get('/proxy-image', async (req, res) => {
+  try {
+      const response = await axios.get('https://www.shutterstock.com/image-vector/modern-x-initial-logo-design-letter-2187504753', { responseType: 'arraybuffer' });
+      res.set('Content-Type', response.headers['content-type']);
+      res.send(response.data);
+  } catch (error) {
+      res.status(500).send('Error fetching the image');
+  }
+});
 // Server listening
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
