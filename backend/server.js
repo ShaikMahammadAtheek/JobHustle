@@ -821,7 +821,13 @@ connection.once('open', () => {
 // app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
-app.use(cors({ origin: 'https://www.jobhustles.com/' }));
+
+// Define the allowed origins
+const allowedOrigins = ['https://jobhustles.com', 'https://www.jobhustles.com'];
+app.use(cors({
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 app.use(express.json());
 app.use(bodyParser.json());
