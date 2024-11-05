@@ -193,6 +193,9 @@
     .job-type-title {
         font-size: 18px;
     }
+    .job-type-image{
+        width: 350px;
+    }
 }
 
 /* For screens up to 576px (small mobile devices) */
