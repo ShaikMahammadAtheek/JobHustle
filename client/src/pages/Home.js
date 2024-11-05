@@ -55,7 +55,7 @@ const Home = () => {
             <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Carear Jobs From Here!...</h1>
             {/* Section to show all jobs */}
             <section className="job-cards">
-                <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
+                <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
 
                 {/* Conditionally render spinner or job cards */}
                 {loading ? (

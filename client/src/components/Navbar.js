@@ -340,7 +340,7 @@ const Navbar = () => {
 
   // Update the document title based on the current path
   useEffect(() => {
-    let title = 'JobsHustles'; // Default title
+    let title = 'JobHustles'; // Default title
 
     switch (location.pathname) {
       case '/off-campus':
@@ -371,7 +371,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-      <i className="footer-name"><Link to="/">JobHustle</Link></i>
+      <i className="footer-name"><Link to="/">JobHustles</Link></i>
       </div>
 
       <div>
