@@ -694,6 +694,13 @@ const JobDetails = () => {
     fetchJobDetails();
   }, [id]);
 
+  useEffect(() => {
+    if (job) {
+      // Update the document title to the job title
+      document.title = `${job.title} - Job Details`; // Customize the title as needed
+    }
+  }, [job]); // This effect runs whenever 'job' changes
+
   if (loading) {
     return (
       <div className="loading-spinner">
@@ -711,7 +718,7 @@ const JobDetails = () => {
   return (
     <div className="bgcol">
       <div className="job-details-container">
-        <h1>{job.title}</h1>
+        <h1 className="job-title">{job.title}</h1> {/* Display the job title */}
         <h2><i style={{ color: "red" }}>Company: </i>{job.company}</h2>
 
         <div className="job-summary">
@@ -823,4 +830,5 @@ const JobDetails = () => {
 };
 
 export default JobDetails;
+
 

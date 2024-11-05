@@ -14,12 +14,44 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px,solid,black;
 }
 
 .card:hover {
   transform: translateY(-10px);
 }
 
+
+/* Card overlay effect */
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  /* width: 200%; */
+  height: 100%;
+  top: -90%;
+  left: -20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+  transition: 0.3s;
+}
+
+.card:hover::after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+
+
+
+.card:hover {
+  color: var(--white);
+  background: var(--radial-gradient);
+  color: white;
+  transform: translateY(-5px);
+  background-color: rgb(13, 27, 42);
+}
 /* Image container with fixed height */
 .card-image {
   width: 100%;
@@ -56,7 +88,7 @@
 }
 
 .HomesJobidLink:hover .card-title {
-  color: rgb(255, 137, 137);
+  color: rgb(247, 245, 245);
 }
 
 .HomesJobidLink:hover .card-image {

@@ -258,6 +258,206 @@ export default Navbar;
 */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import './Navbars.css';
+
+const Navbar = () => {
+  const [selectedCity, setSelectedCity] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownCities, setDropdownCities] = useState([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const isActive = (path) => location.pathname === path;
+
+  // Fetch cities when the dropdown is opened
+  useEffect(() => {
+    if (isDropdownOpen) {
+      axios.get(`${process.env.REACT_APP_API_URL}/cities`)
+        .then(response => {
+          const cleanCities = [...new Set(response.data.map(city => city.trim()))].sort();
+          setDropdownCities(cleanCities);
+        })
+        .catch(error => console.error('Error fetching cities:', error));
+    }
+  }, [isDropdownOpen]);
+
+  // Handle city change and navigation
+  const handleCityChange = (city) => {
+    setSelectedCity(city);
+    if (city) {
+      navigate(`/job-by-city/${city}`);
+      setIsDropdownOpen(false); // Close the dropdown after selection
+    }
+  };
+
+  // Update the document title based on the current path
+  useEffect(() => {
+    let title = 'JobsHustles'; // Default title
+
+    switch (location.pathname) {
+      case '/off-campus':
+        title = 'Off Campus Latest Jobs For Freshers and Experience Persons | Apply Jobs';
+        break;
+      case '/internships':
+        title = 'Internships Latest Opportunities For Freshers | Apply Jobs';
+        break;
+      case '/freshers':
+        title = 'Fresher Latest Jobs For Freshers Persons | Apply Jobs';
+        break;
+      case '/experience':
+        title = 'Experience Latest Jobs For Experience Persons | Apply Jobs';
+        break;
+      case '/support':
+        title = 'Send Your Query';
+        break;
+      case `/job-by-city/${selectedCity}`:
+        title = `Latest ${selectedCity} Jobs For Freshers and Experience Persons | Apply Jobs`;
+        break;
+      default:
+        break;
+    }
+
+    document.title = title;
+  }, [location.pathname, selectedCity]);
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-logo">
+      <i className="footer-name"><Link to="/">JobHustle</Link></i>
+      </div>
+
+      <div>
+        <ul className="navbar-menu-desktop">
+          <li className={isActive('/') ? 'active' : ''}><Link to="/">Home</Link></li>
+          <li className={isActive('/off-campus') ? 'active' : ''}><Link to="/off-campus">Off Campus</Link></li>
+          <li className={isActive('/internships') ? 'active' : ''}><Link to="/internships">Internships</Link></li>
+          <li className={isActive('/freshers') ? 'active' : ''}><Link to="/freshers">Freshers</Link></li>
+          <li className={isActive('/experience') ? 'active' : ''}><Link to="/experience">Experience</Link></li>
+          <li className="dropdown" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
+            <span className="dropdown-toggle">{'Job By City'}</span>
+            {isDropdownOpen && (
+              <div className="dropdown-menu">
+                {dropdownCities.length > 0 ? (
+                  dropdownCities.map((city) => (
+                    <button key={city} onClick={() => handleCityChange(city)} className="dropdown-item">
+                      {city}
+                    </button>
+                  ))
+                ) : (
+                  <p>No cities available</p>
+                )}
+              </div>
+            )}
+          </li>
+          <li className={isActive('/support') ? 'active' : ''}><Link to="/support">Support</Link></li>
+        </ul>
+      </div>
+
+      <div className={`navbar-enquiry ${isMobileMenuOpen ? 'hide-enquiry' : ''}`}>
+        <Link to="/support"><button className="enquiry-button sizeofbutton">Send Query →</button></Link>
+      </div>
+
+      <div className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+
+      <div className={`navbar-menu-container ${isMobileMenuOpen ? 'active' : ''}`}>
+        <ul className="navbar-menu">
+          <div className="navbar-menu-header">
+            <div className="navbar-logo">JobHiring</div>
+            <div className="navbar-menu-close" onClick={() => setIsMobileMenuOpen(false)}>×</div>
+          </div>
+          <ul className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+            <li className={isActive('/') ? 'active' : ''}><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
+            <li className={isActive('/off-campus') ? 'active' : ''}><Link to="/off-campus" onClick={() => setIsMobileMenuOpen(false)}>Off Campus</Link></li>
+            <li className={isActive('/internships') ? 'active' : ''}><Link to="/internships" onClick={() => setIsMobileMenuOpen(false)}>Internships</Link></li>
+            <li className={isActive('/freshers') ? 'active' : ''}><Link to="/freshers" onClick={() => setIsMobileMenuOpen(false)}>Freshers</Link></li>
+            <li className={isActive('/experience') ? 'active' : ''}><Link to="/experience" onClick={() => setIsMobileMenuOpen(false)}>Experience</Link></li>
+            <li className="dropdown" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
+              <span className="dropdown-toggle">{'Job By City'}</span>
+              {isDropdownOpen && (
+                <div className="dropdown-menu">
+                  {dropdownCities.length > 0 ? (
+                    dropdownCities.map((city) => (
+                      <button key={city} onClick={() => handleCityChange(city)} className="dropdown-item">
+                        {city}
+                      </button>
+                    ))
+                  ) : (
+                    <p>No cities available</p>
+                  )}
+                </div>
+              )}
+            </li>
+            <li><Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>Support</Link></li>
+            <li>
+              <Link to="/support"><button className="enquiry-button sizeofbutton" onClick={() => setIsMobileMenuOpen(false)}>Send Query →</button></Link>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+
+
+
+/*
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate ,useLocation} from 'react-router-dom';
 import axios from 'axios';
@@ -328,7 +528,7 @@ const Navbar = () => {
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <span className="dropdown-toggle">
-               {/* {selectedCity || 'Job By City>'} */}
+              
                {'Job By City'}
             </span>
             {isDropdownOpen && (
@@ -355,7 +555,6 @@ const Navbar = () => {
 
       <div className={`navbar-enquiry  ${isMenuOpen ? 'hide-enquiry' : ''}`}>
 <Link to="/support" ><button className="enquiry-button sizeofbutton " >Send Query →</button></Link>
-{/* <Link to="https://t.me/Jobs_hustle" target='_blank' ><button className="enquiry-button sizeofbutton " >Join With Us →</button></Link> */}
 
         
       </div>
@@ -386,7 +585,7 @@ const Navbar = () => {
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
               <span className="dropdown-toggle">
-                {/* {selectedCity || 'Job By City>'} */}
+               
                 {'Job By City'}
               </span>
               {isDropdownOpen && (
@@ -410,8 +609,7 @@ const Navbar = () => {
             <li><Link to="/support" onClick={toggleMobileMenu}>Support</Link></li>
             <li>
                 <Link to="/support" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>
-              {/*<button className="enquiry-button mobile-enquiry"  >Send Enquiry →</button> */}
-                {/* <Link to="https://t.me/Jobs_hustle" target='_blank' ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Join With Us →</button></Link> */}
+
             </li>
           </ul>
         </ul>
@@ -423,6 +621,7 @@ const Navbar = () => {
 
 export default Navbar;
 
+*/
 
 
 
