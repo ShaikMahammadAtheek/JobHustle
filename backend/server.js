@@ -1004,7 +1004,7 @@ app.get('/proxy-image', async (req, res) => {
   }
 });
 // Server listening
-app.listen(port, () => {
+app.listen(port, '0.0.0.0',() => {
   console.log(`Server is running on port: ${port}`);
 });
 
