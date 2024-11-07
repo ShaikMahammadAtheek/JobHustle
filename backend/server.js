@@ -823,7 +823,13 @@ connection.once('open', () => {
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
 // Define the allowed origins
-const allowedOrigins = ['https://jobhustles.com', 'https://www.jobhustles.com'];
+const publickey=process.env.ELASTIC_PUBLIC_KEY;
+const allowedOrigins = [
+  'https://jobhustles.com',
+  'https://www.jobhustles.com',
+  'http://localhost:3000',
+  `http://${publickey}:3000`  // Add this if you're testing locally or accessing from the EC2 public IP
+];
 app.use(cors({
   origin: allowedOrigins,
   optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
