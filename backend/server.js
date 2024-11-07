@@ -44,7 +44,8 @@ connection.once('open', () => {
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
-app.use(cors({ origin: 'http://13.126.52.44:3000' }));
+// Allow CORS for specific origins (you can update the array of allowed origins as needed)
+app.use(cors({origin: process.env.CORS_ORIGIN}));
 // Define the allowed origins
 // const publickey=process.env.ELASTIC_PUBLIC_KEY;
 // const allowedOrigins = [
@@ -224,15 +225,7 @@ app.use('/api/feedback', feedbackRoutes);
 
 
 
-app.get('/proxy-image', async (req, res) => {
-  try {
-      const response = await axios.get('https://www.shutterstock.com/image-vector/modern-x-initial-logo-design-letter-2187504753', { responseType: 'arraybuffer' });
-      res.set('Content-Type', response.headers['content-type']);
-      res.send(response.data);
-  } catch (error) {
-      res.status(500).send('Error fetching the image');
-  }
-});
+
 // Server listening
 app.listen(port, '0.0.0.0',() => {
   console.log(`Server is running on port: ${port}`);
