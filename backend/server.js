@@ -805,8 +805,8 @@ dotenv.config();
 const uri = process.env.MONGODB_URI;
 
 mongoose.connect(uri, { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true, 
+  // useNewUrlParser: true, 
+  // useUnifiedTopology: true, 
   maxPoolSize: 10  // Use 'maxPoolSize' instead of 'poolSize'
 });
 
