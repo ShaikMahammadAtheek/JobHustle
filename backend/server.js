@@ -39,7 +39,7 @@ connection.once('open', () => {
 });
 
 
-// Middleware
+// // Middleware
 // app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
