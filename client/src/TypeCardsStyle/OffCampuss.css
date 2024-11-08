@@ -158,7 +158,7 @@
         width: 100%;
     }
     .job-type-card {
-        width: 320px;
+        width: 380px;
     }
 }
 
@@ -173,12 +173,12 @@
         padding-left: 20px;
     }
     .job-type-card {
-        width: 300px;
+        width: 358px;
     }
 }
 
 /* For screens up to 768px */
-@media (max-width: 768px) {
+@media (max-width: 812px) {
     .offcampus-section {
         width: 95%;
     }
