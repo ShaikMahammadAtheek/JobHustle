@@ -6,7 +6,7 @@
 
 
 //latest Code  Working --W
-// this Should considerd
+// this hould work
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -40,12 +40,15 @@ connection.once('open', () => {
 
 
 // Middleware
-// app.use(cors());
+app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
+
+// app.use(cors({origin: process.env.CORS_ORIGIN}));
+
+
 // Allow CORS for specific origins (you can update the array of allowed origins as needed)
-app.use(cors({origin: process.env.CORS_ORIGIN}));
 // Define the allowed origins
 // const publickey=process.env.ELASTIC_PUBLIC_KEY;
 // const allowedOrigins = [
