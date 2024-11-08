@@ -1,0 +1,164 @@
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures the text and image are on opposite sides */
+    color: white;
+    height: 28rem;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .welcomeheading {
+    background: linear-gradient(to right, #f6356f, #7028e4); /* Gradient from pink to purple */
+    -webkit-background-clip: text; /* Make the background apply only to the text */
+    background-clip: text; /* For non-webkit browsers */
+    color: transparent; /* Make the actual text color transparent */
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .text-section {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .image-section {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Equal height for the job description and typing text */
+  .equal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 3rem; /* Equal height for the typing text and description */
+  }
+  
+  .typing-container {
+    margin-left: 1rem; /* Adds space between the text and the typing effect */
+  }
+  .normaltype{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 9rem;
+    margin-right: -6px;
+  }
+  
+  .job-type {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    background: linear-gradient(to right, #f6356f, #7028e4); /* Gradient from pink to purple */
+    -webkit-background-clip: text; /* Make the background apply only to the text */
+    background-clip: text; /* For non-webkit browsers */
+    color: transparent; /* Make the actual text color transparent */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 1rem; 
+    margin-top: 2.4rem;/* Adds spacing between each job type */
+  }
+  
+  /* Description styling */
+  .description {
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  /* Typing effect */
+  @keyframes typing {
+    0%, 100% {
+      width: 0;
+    }
+    25% {
+      width: 11ch;
+    } /* Off Campus */
+    50% {
+      width: 11ch;
+    } /* Internships */
+    75% {
+      width: 8ch;
+    } /* Freshers */
+    100% {
+      width: 0;
+    } /* Starts over after Freshers */
+  }
+  
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 1025px) {
+    .welcomeheading{
+        font-size: 2.6rem;
+    }
+    .normaltype{
+        margin-left: 3rem;
+    }
+  }
+  @media (max-width: 1020px) {
+    .welcome-section {
+      flex-direction: column; /* Stacks the sections vertically */
+      height: auto; /* Adjust height to accommodate content */
+    }
+  
+    .text-section {
+      max-width: 100%; /* Takes full width when stacked */
+      margin-bottom: 1rem; /* Adds some spacing below text section */
+    }
+  
+    .image-section {
+      display: none; /* Hides the image when screen size is <= 1020px */
+    }
+  
+    .typing-text {
+      font-size: 1.3rem; /* Smaller font size on smaller screens */
+    }
+  
+    .job-type {
+      font-size: 1.8rem; /* Slightly smaller font size */
+    }
+  
+    .description {
+      font-size: 1rem; /* Adjust description font size */
+    }
+    .normaltype{
+        margin-left: 12rem;
+    }
+  }
+  @media (max-width: 500px) {
+    .welcomeheading{
+        font-size: 2rem;
+    }
+    .normaltype{
+        font-size: 1.5rem;
+        margin-left: 2rem;
+    }
+    .job-type {
+        font-size: 1.5rem; 
+        margin-top: 32px;
+        /* Slightly smaller font size */
+      }
+  }

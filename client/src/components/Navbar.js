@@ -311,6 +311,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownCities, setDropdownCities] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -368,8 +369,20 @@ const Navbar = () => {
     document.title = title;
   }, [location.pathname, selectedCity]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isSticky ? 'sticky' : ''}`}>
       <div className="navbar-logo">
       <i className="footer-name"><Link to="/">JobHustles</Link></i>
       </div>
