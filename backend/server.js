@@ -6,7 +6,7 @@
 
 
 //latest Code  Working --W
-// this hould work
+// this should work
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
