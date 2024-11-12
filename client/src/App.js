@@ -14,7 +14,7 @@ import JobByCity from './pages/JobByCity';  //fire and safty
 import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
 import './App.css'; 
-import Welcome from './components/Welcome';
+// import Welcome from './components/Welcome';
 
 //<Route path="/job/:id" element={<JobNotification />} />
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Instagram" className='teliimg' />
                 </a>
       </div>
-      <Welcome/>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/job/:id" element={<JobDetails />} />

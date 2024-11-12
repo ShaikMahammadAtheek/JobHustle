@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Welcome.css"; // Ensure the CSS file is imported
+import "./Welcomes.css"; // Ensure the CSS file is imported
 
 const Welcome = () => {
     useEffect(() => {
@@ -50,18 +50,20 @@ const Welcome = () => {
                     </div>
                 </div>
                 <p className="description">
-                    Searching for the perfect job has never been easier. 
+                    {/* Searching for the perfect job has never been easier. 
                     At JobHustles, you can explore various job opportunities across multiple categories such as Off Campus, Internships, and Freshers. 
                     Simply browse through the available options, apply for the jobs that interest you, and take the first step toward building your career. 
-                    It's fast, easy, and free!
+                    It's fast, easy, and free! */}
+                    Most Trusted leading Job site for Freshers and Experice who seek employment opportunities.
+                    Latest Fresher Jobs, Experience Jobs and Internships etcs.
                 </p>
             </div>
-            <div className="image-section">
+            {/* <div className="image-section">
                 <img
                     src="https://image.slidesdocs.com/responsive-images/background/computer-screen-with-colorful-computer-lights-powerpoint-background_e8277ae137__960_540.jpg" // Replace with your actual image URL
-                    alt="Job Search"
+                    alt="Job Search" 
                 />
-            </div>
+            </div> */}
         </div>
     );
 };

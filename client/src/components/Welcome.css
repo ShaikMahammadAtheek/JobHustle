@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: space-between; /* Ensures the text and image are on opposite sides */
     color: white;
-    height: 28rem;
+    height: 27rem;
     padding: 2rem;
     box-sizing: border-box;
   }
@@ -108,9 +108,13 @@ body {
       border-color: white;
     }
   }
-  
+  @media (max-width: 1154px) {
+    .welcomeheading{
+      font-size: 2.6rem;
+  }
+  }
   /* Responsive Styling */
-  @media (max-width: 1025px) {
+  @media (max-width: 1072px) {
     .welcomeheading{
         font-size: 2.6rem;
     }

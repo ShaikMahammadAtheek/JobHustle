@@ -128,7 +128,7 @@ app.get('/api/offcampus', async (req, res) => {
 app.get('/api/internships', async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const internshipJobs = await Job.find({ jobType: 'Internship' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
+    const internshipJobs = await Job.find({ jobLocationType: 'Internship' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
     res.json(internshipJobs);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching Internship jobs', error });
@@ -139,7 +139,7 @@ app.get('/api/internships', async (req, res) => {
 app.get('/api/freshers', async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const fresherJobs = await Job.find({ jobType: 'Fresher' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
+    const fresherJobs = await Job.find({ jobLocationType: 'Freshers' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
     res.json(fresherJobs);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching Fresher jobs', error });
@@ -150,7 +150,7 @@ app.get('/api/freshers', async (req, res) => {
 app.get('/api/experience', async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const experienceJobs = await Job.find({ jobType: 'Experience' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
+    const experienceJobs = await Job.find({ jobLocationType: 'Experience' }).sort({ createdAt: -1 }).skip(skip).limit(limit);
     res.json(experienceJobs);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching Experience jobs', error });

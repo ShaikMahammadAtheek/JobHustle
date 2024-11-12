@@ -10,6 +10,7 @@ import OffCampuss from '../TypeCards/OffCampuss';
 import Internshipss from '../TypeCards/Internshipss';
 import Fresherss from '../TypeCards/Fresherss';
 import Experiencess from '../TypeCards/Experiencess';
+import Welcome from '../components/Welcome'
 
 const Home = () => {
     const [jobs, setJobs] = useState([]); // State for storing jobs
@@ -51,7 +52,10 @@ const Home = () => {
     }, []); // Run once on component mount
 
     return (
+        <>
+        <Welcome />
         <div>
+            
             <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Carear Jobs From Here!...</h1>
             {/* Section to show all jobs */}
             <section className="job-cards">
@@ -72,10 +76,12 @@ const Home = () => {
             </section>
 
             <div>
-            <OffCampuss/>
-            <Internshipss/>
+            
+           
             <Fresherss/>
             <Experiencess/>
+            <Internshipss/>
+            <OffCampuss/>
             </div>
             
             {/* Section to show grouped jobs by type */}
@@ -99,6 +105,7 @@ const Home = () => {
                 ))}
             </section> */}
         </div>
+        </>
     );
 };
 

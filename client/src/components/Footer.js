@@ -11,8 +11,8 @@ const Footer = () => {
                 <i className="footer-name">JobHustle</i>
             </div>
             <div className="footer-links">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+                <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WHATSAPP" />
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
@@ -20,8 +20,8 @@ const Footer = () => {
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
                     <img src="https://t3.ftcdn.net/jpg/06/97/27/76/240_F_697277665_7RCNAHR7fGbVfL9wRzqSEWMd7RSuCDYj.jpg" alt="YouTube" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                    <img src="https://t3.ftcdn.net/jpg/04/90/60/76/240_F_490607695_Um9lKwonv0mKJe5W3jvAioUUteyXbGvl.jpg" alt="X (formerly Twitter)" />
+                <a href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="X (formerly Twitter)" />
                 </a>
             </div>
             <div className="footer-about">

@@ -12,9 +12,16 @@ const jobDescriptionSchema = new mongoose.Schema({
   mainStream: { type: String, required: true },
   minExperience: { type: String, required: true },
   description: { type: String, required: true },
+  lastdate: { type: String, required: true },
   responsibilities: [{ type: String }],
   qualifications: [{ type: String }],
-  benefits: [{ type: String }]
+  benefits: [{ type: String }],
+  headings: [  // Array of sections under the topic
+    {
+        heading: String,
+        content: [{ type: String }]
+    }
+]
 });
 
 // Main Job Schema
@@ -44,6 +51,7 @@ const jobSchema = new mongoose.Schema({
   eligibility: { type: String },
   postedDate: { type: Date, required: true, index: true },  // Use Date type for consistency and index for faster date-based queries
   jobType: { type: String, required: true, index: true },  // Indexed for faster job type queries
+  jobLocationType:{type:String,required: true, index: true },
   jobDescription: jobDescriptionSchema,
   posted: { type: String, required: true },
   applyNowLink: {

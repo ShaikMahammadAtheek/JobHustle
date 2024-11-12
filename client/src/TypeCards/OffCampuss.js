@@ -93,7 +93,10 @@ const OffCampuss = () => {
                             <div className="job-type-card" key={job._id}>
                                 <Link to={`/job/${job._id}`} className='job-type-link'>
                                     {job.imageUrl && <img className="job-type-image" src={job.imageUrl} alt={job.title} />}
+                                    <div className="thumb">
                                     <h1 className="job-type-title">{job.title}</h1>
+                                    <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
+                                    </div>
                                 </Link>
                             </div>
                         ))}
