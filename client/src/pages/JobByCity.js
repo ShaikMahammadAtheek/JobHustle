@@ -1,48 +1,77 @@
-//Main code
-/*
+
+
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/jobCards.css'; // Import the common CSS for job cards
+import Card from '../components/Card';
+import './Homes.css';
+import Spinner from '../components/Spinner'; // Import your Spinner component
+import { Helmet } from 'react-helmet'; // Import React Helmet for SEO
 
 const JobByCity = () => {
+  const { city } = useParams(); // Get city from URL
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false); // Initialize loading state
 
-  useEffect(() => { 
-  
-    axios.get('http://localhost:5000/api/jobbycity')  // Make sure the API URL is correct
-      .then((response) => {
-        setJobs(response.data);  // Update jobs with response data
-      })
-      .catch((error) => {
-        console.error('Error fetching jobs by city:', error);
-        alert('Could not fetch jobs by city, please try again later.');
-      });
-  }, []);
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+        const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from environment variable
+        const response = await axios.get(`${apiUrl}/job-by-city/${city}`); // Fetch jobs by city
+        setJobs(response.data); // Set jobs with response data
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        alert('Could not fetch jobs, please try again later.'); // Optional alert for error handling
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    console.log(`Fetching jobs for city: ${city}`); // Log the city to the console
+    fetchJobs(); // Call the fetch function
+  }, [city]);
 
   return (
-    <div>
-      <h1>Jobs By City</h1>
-      <div className="job-list">
-        {jobs.map(job => (
-          <div key={job._id} className="job-card">
-            <h2>{job.title}</h2>
-            <p>{job.company}</p>
-            <p>{job.location}</p>
-            <p>{job.description}</p>
-            {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="job-card-image" />}
+    <>
+      {/* React Helmet for dynamic SEO */}
+      <Helmet>
+        <title>Jobs in {city} - Find Your Dream Job</title>
+        <meta name="description" content={`Discover job opportunities in ${city}. Explore various job roles and apply now!`} />
+        <meta name="keywords" content={`jobs in ${city}, job opportunities, career in ${city}, job search ${city}`} />
+        <meta property="og:title" content={`Jobs in ${city} - Find Your Dream Job`} />
+        <meta property="og:description" content={`Discover job opportunities in ${city}. Explore various job roles and apply now!`} />
+        <meta property="og:url" content={`https://www.jobhustles.com/job-by-city/${city}`} />
+        <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
+      </Helmet>
+
+      <div>
+        <h1>Jobs in {city}</h1>
+        {loading ? ( // Conditional rendering based on loading state
+          <Spinner /> // Show spinner while loading
+        ) : (
+          <div className="carts">
+            {jobs.map((job) => (
+              <Card key={job._id} job={job} />
+            ))}
           </div>
-        ))}
+        )}
       </div>
-    </div>
+    </>
   );
 };
 
 export default JobByCity;
 
-*/
 
 
 
+
+
+
+//Main code________________________________________________________________________________________
+
+/*
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -92,6 +121,63 @@ const JobByCity = () => {
 };
 
 export default JobByCity;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/jobCards.css'; // Import the common CSS for job cards
+
+const JobByCity = () => {
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => { 
+  
+    axios.get('http://localhost:5000/api/jobbycity')  // Make sure the API URL is correct
+      .then((response) => {
+        setJobs(response.data);  // Update jobs with response data
+      })
+      .catch((error) => {
+        console.error('Error fetching jobs by city:', error);
+        alert('Could not fetch jobs by city, please try again later.');
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>Jobs By City</h1>
+      <div className="job-list">
+        {jobs.map(job => (
+          <div key={job._id} className="job-card">
+            <h2>{job.title}</h2>
+            <p>{job.company}</p>
+            <p>{job.location}</p>
+            <p>{job.description}</p>
+            {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="job-card-image" />}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default JobByCity;
+
+*/
+
+
 
 
 

@@ -1,6 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card';
+import './Homes.css'; // Import the common CSS for job cards
+import { Helmet } from 'react-helmet'; // Import React Helmet for SEO
+
+const Experience = () => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false); // Initialize loading state
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+        const response = await axios.get(`${apiUrl}/experience`); // Ensure the API URL is correct
+        setJobs(response.data); // Update jobs with response data
+      } catch (error) {
+        console.error('Error fetching experience jobs:', error);
+        alert('Could not fetch experience jobs, please try again later.');
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    fetchJobs();
+  }, [apiUrl]);
+
+  return (
+    <>
+      {/* React Helmet for dynamic SEO */}
+      <Helmet>
+        <title>Experience Jobs - Advance Your Career</title>
+        <meta name="description" content="Browse the latest experience-based job opportunities. Take the next step in your career." />
+        <meta name="keywords" content="experience jobs, experienced professionals, career growth, job opportunities" />
+        <meta property="og:title" content="Experience Jobs - Advance Your Career" />
+        <meta property="og:description" content="Browse the latest experience-based job opportunities. Take the next step in your career." />
+        <meta property="og:url" content="https://www.jobhustles.com/experience" />
+        <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
+      </Helmet>
+
+      <div>
+        <h1>Experience Jobs</h1>
+
+        {/* Display job cards if jobs are available */}
+        <div className="carts">
+          {jobs.length > 0 ? (
+            jobs.map((job) => (
+              <Card key={job._id} job={job} />
+            ))
+          ) : (
+            <p>No experience jobs available at the moment.</p>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Experience;
+
+
+//Main Code_______________________________________________________________________________________________
+/*
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from '../components/Card';
 import './Homes.css';
 
 const Experience = () => {
@@ -40,6 +104,28 @@ const Experience = () => {
   );
 };
 export default Experience;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

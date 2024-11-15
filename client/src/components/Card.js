@@ -62,7 +62,7 @@ export default Card;
 
 
 
-
+//MAin code-----------------------------------------------------------------------------------------------------------------
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -99,6 +99,145 @@ const Card = ({ job }) => {
 };
 
 export default Card;
+
+
+
+
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { Helmet } from 'react-helmet'; // Import React Helmet
+// import './Card.css';
+
+// const Card = ({ job }) => {
+//   const jobDescription = job.jobDescription || {};
+  
+//   return (
+//     <div className="card">
+//       {/* React Helmet for dynamic SEO */}
+//       <Helmet>
+//         <title>{job.title} - JobHustles</title>
+//         <meta name="description" content={job.description || "No description available"} />
+//         <meta name="keywords" content={`${job.title}, ${job.company}, ${job.location}, fresher jobs`} />
+//         <meta property="og:title" content={job.title} />
+//         <meta property="og:description" content={job.description || "No description available"} />
+//         <meta property="og:image" content={job.imageUrl || "path/to/default-image.jpg"} />
+//         <meta property="og:url" content={`https://www.jobhustles.com/job/${job._id}`} />
+//       </Helmet>
+
+//       <Link to={`/job/${job._id}`} className='HomesJobidLink'>
+//         {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
+//         <h1 className="card-title">{job.title}</h1>
+//         <p className="card-company"><b>Hiring Type:</b> {jobDescription.jobType}</p>
+//         <p className="card-location">Location: {job.location}</p>
+//         <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
+//       </Link>
+//     </div>
+//   );
+// };
+
+// export default Card;
+
+
+
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { Helmet } from 'react-helmet'; // Importing Helmet
+// import './Card.css';
+
+// const Card = ({ job, pageTitle }) => {
+//   const jobDescription = job.jobDescription || {};
+
+//   return (
+//     <>
+//       <Helmet>
+//         <title>{pageTitle || "JobHustles - Latest Jobs Notifications and Opportunities | Let's Apply"}</title>
+//         <meta name="description" content="Explore the latest job notifications, internships, and opportunities tailored for freshers and experienced candidates." />
+//       </Helmet>
+//       <div className="card">
+//         <Link to={`/job/${job._id}`} className="HomesJobidLink">
+//           {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
+//           <h1 className="card-title">{job.title}</h1>
+//           <p className="card-company"><b>Hiring Type:</b> {jobDescription.jobType}</p>
+//           <p className="card-location">Location: {job.location}</p>
+//           <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
+//         </Link>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Card;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
