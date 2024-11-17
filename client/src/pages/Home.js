@@ -1,87 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Card from '../components/Card'; // Assuming you have a Card component
-import Spinner from '../components/Spinner'; // Import Spinner component
-import './Homes.css'; // General styles
-import './HomesType.css'; // Specific job-type section styles
-import OffCampuss from '../TypeCards/OffCampuss';
-import Internshipss from '../TypeCards/Internshipss';
-import Fresherss from '../TypeCards/Fresherss';
-import Experiencess from '../TypeCards/Experiencess';
-import Welcome from '../components/Welcome';
-import { Helmet } from 'react-helmet'; // Import React Helmet
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import Card from '../components/Card'; // Assuming you have a Card component
+// import Spinner from '../components/Spinner'; // Import Spinner component
+// import './Homes.css'; // General styles
+// import './HomesType.css'; // Specific job-type section styles
+// import OffCampuss from '../TypeCards/OffCampuss';
+// import Internshipss from '../TypeCards/Internshipss';
+// import Fresherss from '../TypeCards/Fresherss';
+// import Experiencess from '../TypeCards/Experiencess';
+// import Welcome from '../components/Welcome';
+// import { Helmet } from 'react-helmet'; // Import React Helmet
 
-const Home = () => {
-    const [jobs, setJobs] = useState([]); // State for storing jobs
-    const [loading, setLoading] = useState(true); // Loading state
-    const [error, setError] = useState(null); // State to handle errors
+// const Home = () => {
+//     const [jobs, setJobs] = useState([]); // State for storing jobs
+//     const [loading, setLoading] = useState(true); // Loading state
+//     const [error, setError] = useState(null); // State to handle errors
 
-    // Fetch jobs from the backend and group them by jobType
-    useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                setLoading(true); // Start loading
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
-                const jobsData = response.data;
-                setJobs(jobsData); // Set the jobs in state
-            } catch (error) {
-                console.error('Error fetching jobs:', error);
-                setError('Could not fetch jobs, please try again later.'); // Set error message
-            } finally {
-                setLoading(false); // Stop loading after fetch
-            }
-        };
+//     // Fetch jobs from the backend and group them by jobType
+//     useEffect(() => {
+//         const fetchJobs = async () => {
+//             try {
+//                 setLoading(true); // Start loading
+//                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
+//                 const jobsData = response.data;
+//                 setJobs(jobsData); // Set the jobs in state
+//             } catch (error) {
+//                 console.error('Error fetching jobs:', error);
+//                 setError('Could not fetch jobs, please try again later.'); // Set error message
+//             } finally {
+//                 setLoading(false); // Stop loading after fetch
+//             }
+//         };
 
-        fetchJobs();
-    }, []); // Run once on component mount
+//         fetchJobs();
+//     }, []); // Run once on component mount
 
-    return (
-        <>
-            {/* React Helmet for dynamic SEO */}
-            <Helmet>
-                <title>JobHustles - Latest Job Notifications and Opportunities | Let's Apply</title>
-                <meta name="description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
-                <meta name="keywords" content="jobs, job opportunities, career, hiring, internships, fresher jobs, job openings" />
-                <meta property="og:title" content="JobHustles - Latest Job Notifications" />
-                <meta property="og:description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
-                <meta property="og:url" content="https://www.jobhustles.com" />
-                <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
-            </Helmet>
+//     return (
+//         <>
+            
+//             <Helmet>
+//                 <title>JobHustles - Latest Job Notifications and Opportunities | Let's Apply</title>
+//                 <meta name="description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
+//                 <meta name="keywords" content="jobs, job opportunities, career, hiring, internships, fresher jobs, job openings,experience jobs" />
+//                 <meta property="og:title" content="JobHustles - Latest Job Notifications" />
+//                 <meta property="og:description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
+//                 <meta property="og:url" content="https://www.jobhustles.com" />
+//                 <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
+//             </Helmet>
 
-            <Welcome />
-            <div>
-                <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Career Jobs From Here!...</h1>
+//             <Welcome />
+//             <div>
+//                 <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Career Jobs From Here!...</h1>
 
-                {/* Section to show all jobs */}
-                <section className="job-cards">
-                    <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
+                
+//                 <section className="job-cards">
+//                     <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
 
-                    {/* Conditionally render spinner or job cards */}
-                    {loading ? (
-                        <Spinner /> // Show spinner while loading
-                    ) : error ? (
-                        <p className="error">{error}</p> // Show error message if there's an error
-                    ) : (
-                        <div className="carts">
-                            {jobs.map((job) => (
-                                <Card key={job._id} job={job} />
-                            ))}
-                        </div>
-                    )}
-                </section>
+                    
+//                     {loading ? (
+//                         <Spinner /> // Show spinner while loading
+//                     ) : error ? (
+//                         <p className="error">{error}</p> // Show error message if there's an error
+//                     ) : (
+//                         <div className="carts">
+//                             {jobs.map((job) => (
+//                                 <Card key={job._id} job={job} />
+//                             ))}
+//                         </div>
+//                     )}
+//                 </section>
 
-                <div>
-                    <Fresherss />
-                    <Experiencess />
-                    <Internshipss />
-                    <OffCampuss />
-                </div>
-            </div>
-        </>
-    );
-};
+//                 <div>
+//                     <Fresherss />
+//                     <Experiencess />
+//                     <Internshipss />
+//                     <OffCampuss />
+//                 </div>
+//             </div>
+//         </>
+//     );
+// };
 
-export default Home;
+// export default Home;
 
 
 
@@ -94,7 +94,7 @@ export default Home;
 
 //Main code---------------------------------------------------------------------------------------------------------------
 
-/*
+
 
 // Fresher Voice code 2...
 
@@ -157,7 +157,7 @@ const Home = () => {
         <div>
             
             <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Carear Jobs From Here!...</h1>
-            {/* Section to show all jobs *}
+            {/* Section to show all jobs */}
             <section className="job-cards">
                 <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
 
@@ -203,7 +203,7 @@ const Home = () => {
                         </div>
                     </div>
                 ))}
-            </section> *}
+            </section> */}
         </div>
         </>
     );
@@ -211,7 +211,7 @@ const Home = () => {
 
 export default Home;
 
-*/
+
 
 
 
