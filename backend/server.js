@@ -257,19 +257,19 @@ app.get('/sitemap.xml', async (req, res) => {
 
 
 // Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('frontend/build'));
 
-  // Catch-all route to send the React app on any non-API route
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  });
-}
+//   // Catch-all route to send the React app on any non-API route
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+//   });
+// }
 
-// 404 handler for any undefined routes
-app.use((req, res) => {
-  res.status(404).json({ error: 'Page not found' });
-});
+// // 404 handler for any undefined routes
+// app.use((req, res) => {
+//   res.status(404).json({ error: 'Page not found' });
+// });
 
 
 // Server listening
