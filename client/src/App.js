@@ -14,6 +14,7 @@ import JobByCity from './pages/JobByCity';  //fire and safty
 import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
 import './App.css'; 
+import NotFound from './components/NotFound';
 import { Helmet } from 'react-helmet';
 // import Welcome from './components/Welcome';
 
@@ -23,7 +24,7 @@ const App = () => {
     <div className='bgcol'>
     <Router >
     <Helmet>
-                <title>JobHustles - Best Job Opportunities for Freshers and Experienced</title>
+                <title>JobHustles - Best Job Opportunities for Freshers and Experienced | Let's Apply</title>
                 <meta name="description" content="Find the best job opportunities for freshers and experienced professionals at JobHustles. Explore career guidance, job notifications, internships, and more!.Lets Apply Jobs Through Jobhustles!." />
                 <meta name="keywords" content="job opportunities,gunuine jobs,job posts,latest fresher jobs,trending jobs for freshers and experience,job notification,offcampous,explore jobs, freshers jobs, internships, career guidance, job search" />
                 <meta property="og:title" content="JobHustles - Best Job Opportunities for Freshers ,Experienced and etc.." />
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/job-by-city/:city" element={<JobByCity />} />
         <Route path="/support" element={<Support />} />
         <Route path="/job/:id/details" element={<JobDetails />} />
+        <Route component={NotFound} />
       </Routes>
       <Footer />
     </Router>
