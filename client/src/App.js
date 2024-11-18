@@ -14,7 +14,7 @@ import JobByCity from './pages/JobByCity';  //fire and safty
 import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
 import './App.css'; 
-import NotFound from './components/NotFound';
+// import NotFound from './components/NotFound';
 import { Helmet } from 'react-helmet';
 // import Welcome from './components/Welcome';
 
@@ -58,7 +58,7 @@ const App = () => {
         <Route path="/job-by-city/:city" element={<JobByCity />} />
         <Route path="/support" element={<Support />} />
         <Route path="/job/:id/details" element={<JobDetails />} />
-        <Route component={NotFound} />
+        {/* <Route component={NotFound} /> */}
       </Routes>
       <Footer />
     </Router>

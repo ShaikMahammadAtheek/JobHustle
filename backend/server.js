@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const jobRoutes = require('./routes/jobRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 const dotenv = require('dotenv'); 
-const { SitemapStream, streamToPromise } = require('sitemap');
+// const { SitemapStream, streamToPromise } = require('sitemap');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -229,29 +229,29 @@ app.use('/api/feedback', feedbackRoutes);
 
 
 // Sitemap route
-app.get('/sitemap.xml', async (req, res) => {
-  try {
-    const sitemap = new SitemapStream({ hostname: 'https://jobhustles.com' });
+// app.get('/sitemap.xml', async (req, res) => {
+//   try {
+//     const sitemap = new SitemapStream({ hostname: 'https://jobhustles.com' });
 
-    // Static routes
-    sitemap.write({ url: '/', changefreq: 'daily', priority: 1.0 });
-    sitemap.write({ url: '/freshers', changefreq: 'weekly', priority: 0.8 });
-    sitemap.write({ url: '/offcampus', changefreq: 'weekly', priority: 0.8 });
+//     // Static routes
+//     sitemap.write({ url: '/', changefreq: 'daily', priority: 1.0 });
+//     sitemap.write({ url: '/freshers', changefreq: 'weekly', priority: 0.8 });
+//     sitemap.write({ url: '/offcampus', changefreq: 'weekly', priority: 0.8 });
 
-    // Dynamic routes from the database
-    const jobs = await Job.find();
-    jobs.forEach(job => {
-      sitemap.write({ url: `/jobs/${job.slug}`, changefreq: 'weekly', priority: 0.7 });
-    });
+//     // Dynamic routes from the database
+//     const jobs = await Job.find();
+//     jobs.forEach(job => {
+//       sitemap.write({ url: `/jobs/${job.slug}`, changefreq: 'weekly', priority: 0.7 });
+//     });
 
-    sitemap.end();
-    const sitemapXml = await streamToPromise(sitemap);
-    res.header('Content-Type', 'application/xml');
-    res.send(sitemapXml.toString());
-  } catch (error) {
-    res.status(500).end();
-  }
-});
+//     sitemap.end();
+//     const sitemapXml = await streamToPromise(sitemap);
+//     res.header('Content-Type', 'application/xml');
+//     res.send(sitemapXml.toString());
+//   } catch (error) {
+//     res.status(500).end();
+//   }
+// });
 
 
 
