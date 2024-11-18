@@ -15,7 +15,7 @@ import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
 import './App.css'; 
 // import NotFound from './components/NotFound';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 // import Welcome from './components/Welcome';
 
 //<Route path="/job/:id" element={<JobNotification />} />
@@ -23,20 +23,7 @@ const App = () => {
   return (
     <div className='bgcol'>
     <Router >
-    <Helmet>
-                <title>JobHustles - Best Job Opportunities for Freshers and Experienced | Let's Apply</title>
-                <meta name="description" content="Find the best job opportunities for freshers and experienced professionals at JobHustles. Explore career guidance, job notifications, internships, and more!.Lets Apply Jobs Through Jobhustles!." />
-                <meta name="keywords" content="job opportunities,gunuine jobs,job posts,latest fresher jobs,trending jobs for freshers and experience,job notification,offcampous,explore jobs, freshers jobs, internships, career guidance, job search" />
-                <meta property="og:title" content="JobHustles - Best Job Opportunities for Freshers ,Experienced and etc.." />
-                <meta property="og:description" content="Discover a Latest job opportunities and internships at JobHustles. Get career guidance, job alerts, and apply today!" />
-                <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
-                <meta property="og:url" content="https://www.jobhustles.com" />
-                <meta property="og:type" content="website" />
-                {/* <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="JobHustles - Best Job Opportunities for Freshers and Experienced" />
-                <meta name="twitter:description" content="Find the latest job listings, internships, and career resources at JobHustles!" />
-                <meta name="twitter:image" content="https://www.jobhustles.com/images/logo.png" /> */}
-            </Helmet>
+
       <Navbar />
     <div className="whatteli">
                 <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer" className='what'>
