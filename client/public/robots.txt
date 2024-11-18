@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.jobhustles.com/sitemap.xml
+Sitemap: https://jobhustles.com/sitemap.xml

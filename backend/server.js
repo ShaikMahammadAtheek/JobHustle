@@ -231,7 +231,7 @@ app.use('/api/feedback', feedbackRoutes);
 // Sitemap route
 app.get('/sitemap.xml', async (req, res) => {
   try {
-    const sitemap = new SitemapStream({ hostname: 'https://www.jobhustles.com' });
+    const sitemap = new SitemapStream({ hostname: 'https://jobhustles.com' });
 
     // Static routes
     sitemap.write({ url: '/', changefreq: 'daily', priority: 1.0 });
