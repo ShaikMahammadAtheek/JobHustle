@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Noto+Kufi+Arabic:wght@100..900&family=Protest+Revolution&display=swap');
 .whatteli{
   
   margin-top: 0px;
@@ -50,7 +52,12 @@
 
 
 
-
+.bujjikanna{
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
 
 
 

@@ -25,7 +25,7 @@ const App = () => {
     <Router >
 
       <Navbar />
-    <div className="whatteli">
+    {/* <div className="whatteli">
                 <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer" className='what'>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Facebook" className='whatimg' />
                 </a>
@@ -33,7 +33,42 @@ const App = () => {
                 <a href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer" className='teli'>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Instagram" className='teliimg' />
                 </a>
-      </div>
+      </div> */}
+      {/* <a  href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer" className='teli' style={{ textDecoration: 'none' }}>
+                   
+                    <span style={{color:"red" , fontSize:'20px',fontWeight:"bold"}}>Join Here For Latest Job Updates</span>
+                    
+                </a> */}
+      <marquee className="whatteli">
+  <a 
+    href="https://t.me/Jobs_hustle" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="teli"
+    style={{ 
+      textDecoration: 'none', 
+      display: 'flex', 
+      alignItems: 'center', 
+      gap: '8px' 
+    }}
+  >
+    
+    <span style={{ color: 'red', fontSize: '18px', fontWeight: 'bold' }} className='bujjikanna'>
+      Join Here For Latest Job Updates
+    </span>
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
+      alt="Telegram" 
+      className="teliimg"
+      style={{ 
+        width: '30pxx', 
+        height: '30px', 
+        objectFit: 'contain' 
+      }} 
+    />
+  </a>
+</marquee>
+
       
       <Routes>
         <Route path="/" element={<Home />} />
