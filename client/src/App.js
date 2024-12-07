@@ -39,7 +39,7 @@ const App = () => {
                     <span style={{color:"red" , fontSize:'20px',fontWeight:"bold"}}>Join Here For Latest Job Updates</span>
                     
                 </a> */}
-      <marquee className="whatteli">
+      {/* <marquee className="whatteli">
   <a 
     href="https://t.me/Jobs_hustle" 
     target="_blank" 
@@ -67,7 +67,7 @@ const App = () => {
       }} 
     />
   </a>
-</marquee>
+</marquee> */}
 
       
       <Routes>
