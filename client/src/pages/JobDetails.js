@@ -246,7 +246,8 @@ const JobDetails = () => {
           </div>
 
           <div className="job-details">
-            <h3>Posted: {new Date(job.postedDate).toLocaleDateString()}</h3>
+            {/* <h3>Posted: {new Date(job.postedDate).toLocaleDateString()}</h3> */}
+            <h3>Posted: {new Date(job.postedDate).toLocaleDateString('en-GB')}</h3>
             <h4>Job Description</h4>
             <p>{job.description || 'No description available.'}</p>
 
