@@ -1,12 +1,116 @@
 
 
+
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Spinner from '../components/Spinner'; // Import your Spinner component
+import Card from '../components/Card';
+import './Homes.css'; // Import the common CSS for job cards
+import { Helmet } from 'react-helmet'; // Import Helmet for SEO optimization
+
+const JobByCity = () => {
+  const { city } = useParams(); // Get city from URL
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false); // Initialize loading state
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+        const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from environment variable
+        const response = await axios.get(`${apiUrl}/job-by-city/${city}`); // Fetch jobs by city
+        setJobs(response.data); // Set jobs with response data
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        alert('Could not fetch jobs, please try again later.'); // Optional alert for error handling
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    console.log(`Fetching jobs for city: ${city}`); // Log the city to the console
+    fetchJobs(); // Call the fetch function
+  }, [city]);
+
+  // JSON-LD Structured Data for SEO (JobPosting)
+  const jobSchema = jobs.map((job) => ({
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": job.title,
+    "description": job.description,
+    "datePosted": job.postedDate, // Date the job was posted
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": job.company, // Company name from job model
+      "sameAs": job.companyUrl || "", // Optional: if you have a URL for the company
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": city, // Location set to city
+      },
+    },
+    "employmentType": job.jobType, // Type of job: Full-time, Part-time, etc.
+    "url": job.applyNowLink || "", // Link to apply, from job model
+    "qualifications": job.jobDescription.qualifications || [], // Qualifications from jobDescription
+    "responsibilities": job.jobDescription.responsibilities || [], // Responsibilities from jobDescription
+  }));
+
+  // Display a loading spinner if data is still loading
+  if (loading) {
+    return <Spinner />; // Maintain loading spinner
+  }
+
+  return (
+    <div>
+      {/* SEO with Helmet */}
+      <Helmet>
+        <title>Jobs in {city} | JobHustles</title>
+        <meta name="description" content={`Find the latest job opportunities in ${city}. Apply for jobs in various industries at JobHustles.`} />
+        <meta name="keywords" content={`jobs in ${city}, job opportunities, ${city} jobs, job hustles`} />
+        <meta property="og:title" content={`Jobs in ${city} | JobHustles`} />
+        <meta property="og:description" content={`Browse job listings in ${city} and apply for top job opportunities at JobHustles.`} />
+        <meta property="og:image" content="path_to_image_or_logo" />
+        <meta property="og:url" content={`https://jobhustles.com/job-by-city/${city}`} />
+        
+        {/* JSON-LD Schema for Job Postings */}
+        <script type="application/ld+json">
+          {JSON.stringify(jobSchema)}
+        </script>
+      </Helmet>
+
+      <h1>Jobs in {city}</h1>
+      <div className="carts">
+        {jobs.length > 0 ? (
+          jobs.map((job) => (
+            <Card key={job._id} job={job} />  // Assuming Card is a component that renders job details
+          ))
+        ) : (
+          <p>No jobs available in {city} at the moment.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default JobByCity;
+
+
+
+
+
+//Main code________________________________________________________________________________________
+
+
 // import React, { useState, useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
 // import axios from 'axios';
+// // import Jobss from '../components/Jobss';
 // import Card from '../components/Card';
 // import './Homes.css';
 // import Spinner from '../components/Spinner'; // Import your Spinner component
-// import { Helmet } from 'react-helmet'; // Import React Helmet for SEO
 
 // const JobByCity = () => {
 //   const { city } = useParams(); // Get city from URL
@@ -33,94 +137,22 @@
 //   }, [city]);
 
 //   return (
-//     <>
-     
-//       <Helmet>
-//         <title>Jobs in {city} - Find Your Dream Job</title>
-//         <meta name="description" content={`Discover job opportunities in ${city}. Explore various job roles and apply now!`} />
-//         <meta name="keywords" content={`jobs in ${city}, job opportunities, career in ${city}, job search ${city}`} />
-//         <meta property="og:title" content={`Jobs in ${city} - Find Your Dream Job`} />
-//         <meta property="og:description" content={`Discover job opportunities in ${city}. Explore various job roles and apply now!`} />
-//         <meta property="og:url" content={`https://www.jobhustles.com/job-by-city/${city}`} />
-//         <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
-//       </Helmet>
-
-//       <div>
-//         <h1>Jobs in {city}</h1>
-//         {loading ? ( // Conditional rendering based on loading state
-//           <Spinner /> // Show spinner while loading
-//         ) : (
-//           <div className="carts">
-//             {jobs.map((job) => (
-//               <Card key={job._id} job={job} />
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </>
+//     <div>
+//       <h1>Jobs in {city}</h1>
+//       {loading ? ( // Conditional rendering based on loading state
+//         <Spinner /> // Show spinner while loading
+//       ) : (
+//         <div className="carts">
+//                         {jobs.map((job) => (
+//                             <Card key={job._id} job={job} />
+//                         ))}
+//                     </div>
+//       )}
+//     </div>
 //   );
 // };
 
 // export default JobByCity;
-
-
-
-
-
-
-
-//Main code________________________________________________________________________________________
-
-
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-// import Jobss from '../components/Jobss';
-import Card from '../components/Card';
-import './Homes.css';
-import Spinner from '../components/Spinner'; // Import your Spinner component
-
-const JobByCity = () => {
-  const { city } = useParams(); // Get city from URL
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(false); // Initialize loading state
-
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        setLoading(true); // Set loading to true before fetching
-        const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from environment variable
-        const response = await axios.get(`${apiUrl}/job-by-city/${city}`); // Fetch jobs by city
-        setJobs(response.data); // Set jobs with response data
-      } catch (error) {
-        console.error('Error fetching jobs:', error);
-        alert('Could not fetch jobs, please try again later.'); // Optional alert for error handling
-      } finally {
-        setLoading(false); // Set loading to false after fetching
-      }
-    };
-
-    console.log(`Fetching jobs for city: ${city}`); // Log the city to the console
-    fetchJobs(); // Call the fetch function
-  }, [city]);
-
-  return (
-    <div>
-      <h1>Jobs in {city}</h1>
-      {loading ? ( // Conditional rendering based on loading state
-        <Spinner /> // Show spinner while loading
-      ) : (
-        <div className="carts">
-                        {jobs.map((job) => (
-                            <Card key={job._id} job={job} />
-                        ))}
-                    </div>
-      )}
-    </div>
-  );
-};
-
-export default JobByCity;
 
 
 

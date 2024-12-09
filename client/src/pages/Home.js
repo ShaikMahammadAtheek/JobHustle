@@ -1,87 +1,119 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import Card from '../components/Card'; // Assuming you have a Card component
-// import Spinner from '../components/Spinner'; // Import Spinner component
-// import './Homes.css'; // General styles
-// import './HomesType.css'; // Specific job-type section styles
-// import OffCampuss from '../TypeCards/OffCampuss';
-// import Internshipss from '../TypeCards/Internshipss';
-// import Fresherss from '../TypeCards/Fresherss';
-// import Experiencess from '../TypeCards/Experiencess';
-// import Welcome from '../components/Welcome';
-// import { Helmet } from 'react-helmet'; // Import React Helmet
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Helmet } from 'react-helmet'; // Import React Helmet for SEO management
+import Card from '../components/Card'; // Assuming you have a Card component
+import Spinner from '../components/Spinner'; // Import Spinner component
+import './Homes.css'; // General styles
+import './HomesType.css'; // Specific job-type section styles
+import OffCampuss from '../TypeCards/OffCampuss';
+import Internshipss from '../TypeCards/Internshipss';
+import Fresherss from '../TypeCards/Fresherss';
+import Experiencess from '../TypeCards/Experiencess';
+import Welcome from '../components/Welcome'
 
-// const Home = () => {
-//     const [jobs, setJobs] = useState([]); // State for storing jobs
-//     const [loading, setLoading] = useState(true); // Loading state
-//     const [error, setError] = useState(null); // State to handle errors
+const Home = () => {
+  const [jobs, setJobs] = useState([]); // State for storing jobs
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // State to handle errors
 
-//     // Fetch jobs from the backend and group them by jobType
-//     useEffect(() => {
-//         const fetchJobs = async () => {
-//             try {
-//                 setLoading(true); // Start loading
-//                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
-//                 const jobsData = response.data;
-//                 setJobs(jobsData); // Set the jobs in state
-//             } catch (error) {
-//                 console.error('Error fetching jobs:', error);
-//                 setError('Could not fetch jobs, please try again later.'); // Set error message
-//             } finally {
-//                 setLoading(false); // Stop loading after fetch
-//             }
-//         };
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Start loading
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
+        setJobs(response.data); // Set jobs in state
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        setError('Could not fetch jobs, please try again later.'); // Set error message
+      } finally {
+        setLoading(false); // Stop loading after fetch
+      }
+    };
 
-//         fetchJobs();
-//     }, []); // Run once on component mount
+    fetchJobs();
+  }, []); // Run once on component mount
 
-//     return (
-//         <>
-            
-//             <Helmet>
-//                 <title>JobHustles - Latest Job Notifications and Opportunities | Let's Apply</title>
-//                 <meta name="description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
-//                 <meta name="keywords" content="jobs, job opportunities, career, hiring, internships, fresher jobs, job openings,experience jobs" />
-//                 <meta property="og:title" content="JobHustles - Latest Job Notifications" />
-//                 <meta property="og:description" content="Find the latest job notifications and opportunities on JobHustles. Explore job openings in various fields and locations." />
-//                 <meta property="og:url" content="https://www.jobhustles.com" />
-//                 <meta property="og:image" content="https://www.jobhustles.com/images/logo.png" />
-//             </Helmet>
+  // SEO metadata for the Home page
+  const pageTitle = "JobHustles - Freshers Job Portal for job Opportunities and Career Advice";
+  const pageDescription = "Find the latest job openings, internships, and career advice at JobHustles. Join our community to boost your career!";
+  const pageUrl = `${window.location.origin}/home`; // Dynamic URL for SEO
+  const pageImage = `${window.location.origin}/images/logo.jpg`; // Default image for SEO
 
-//             <Welcome />
-//             <div>
-//                 <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Career Jobs From Here!...</h1>
+  // Structured Data for Job Portal (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "JobHustles",
+    "url": "https://jobhustles.com",
+    "logo": "https://jobhustles.com/images/logo.jpg",
+    "sameAs": [
+      "https://www.facebook.com/JobHustles",
+      "https://www.instagram.com/jobhustles",
+      "https://www.linkedin.com/company/jobhustles"
+    ]
+  };
 
-                
-//                 <section className="job-cards">
-//                     <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
+  return (
+    <>
+      {/* React Helmet for SEO optimization */}
+      <Helmet>
+        <meta charset="UTF-8" />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="job portal, career opportunities, internships, job listings, JobHustles" />
 
-                    
-//                     {loading ? (
-//                         <Spinner /> // Show spinner while loading
-//                     ) : error ? (
-//                         <p className="error">{error}</p> // Show error message if there's an error
-//                     ) : (
-//                         <div className="carts">
-//                             {jobs.map((job) => (
-//                                 <Card key={job._id} job={job} />
-//                             ))}
-//                         </div>
-//                     )}
-//                 </section>
+        {/* Open Graph (OG) Tags for Facebook/LinkedIn */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
 
-//                 <div>
-//                     <Fresherss />
-//                     <Experiencess />
-//                     <Internshipss />
-//                     <OffCampuss />
-//                 </div>
-//             </div>
-//         </>
-//     );
-// };
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
 
-// export default Home;
+        {/* Structured Data for Job Portal */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
+      <Welcome />
+      <div>
+        <h1 style={{ "color": "red" }} id='mainhomeheading'>Let's Search Your Career Jobs From Here!...</h1>
+
+        {/* Section to show all jobs */}
+        <section className="job-cards">
+          <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
+
+          {loading ? (
+            <Spinner /> // Show spinner while loading
+          ) : error ? (
+            <p className="error">{error}</p> // Show error message if there's an error
+          ) : (
+            <div className="carts">
+              {jobs.map((job) => (
+                <Card key={job._id} job={job} />
+              ))}
+            </div>
+          )}
+        </section>
+
+        <div>
+          <Fresherss />
+          <Experiencess />
+          <Internshipss />
+          <OffCampuss />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Home;
 
 
 
@@ -99,117 +131,117 @@
 // Fresher Voice code 2...
 
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Card from '../components/Card'; // Assuming you have a Card component
-import Spinner from '../components/Spinner'; // Import Spinner component
-import './Homes.css'; // General styles
-import './HomesType.css'; // Specific job-type section styles
-// import { Link } from 'react-router-dom';
-import OffCampuss from '../TypeCards/OffCampuss';
-import Internshipss from '../TypeCards/Internshipss';
-import Fresherss from '../TypeCards/Fresherss';
-import Experiencess from '../TypeCards/Experiencess';
-import Welcome from '../components/Welcome'
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import Card from '../components/Card'; // Assuming you have a Card component
+// import Spinner from '../components/Spinner'; // Import Spinner component
+// import './Homes.css'; // General styles
+// import './HomesType.css'; // Specific job-type section styles
+// // import { Link } from 'react-router-dom';
+// import OffCampuss from '../TypeCards/OffCampuss';
+// import Internshipss from '../TypeCards/Internshipss';
+// import Fresherss from '../TypeCards/Fresherss';
+// import Experiencess from '../TypeCards/Experiencess';
+// import Welcome from '../components/Welcome'
 
-const Home = () => {
-    const [jobs, setJobs] = useState([]); // State for storing jobs
-    // const [groupedJobs, setGroupedJobs] = useState({}); // State for grouped jobs by type
-    const [loading, setLoading] = useState(true); // Loading state
-    const [error, setError] = useState(null); // State to handle errors
+// const Home = () => {
+//     const [jobs, setJobs] = useState([]); // State for storing jobs
+//     // const [groupedJobs, setGroupedJobs] = useState({}); // State for grouped jobs by type
+//     const [loading, setLoading] = useState(true); // Loading state
+//     const [error, setError] = useState(null); // State to handle errors
 
-    // Fetch jobs from the backend and group them by jobType
-    useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                setLoading(true); // Start loading
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
-                const jobsData = response.data;
+//     // Fetch jobs from the backend and group them by jobType
+//     useEffect(() => {
+//         const fetchJobs = async () => {
+//             try {
+//                 setLoading(true); // Start loading
+//                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`);
+//                 const jobsData = response.data;
 
-                // Group jobs by jobType, but exclude 'Other' jobs
-                // const grouped = jobsData.reduce((acc, job) => {
-                //     if (job.jobType) { // Exclude jobs without a jobType
-                //         const type = job.jobType;
-                //         if (!acc[type]) {
-                //             acc[type] = [];
-                //         }
-                //         acc[type].push(job);
-                //     }
-                //     return acc;
-                // }, {});
+//                 // Group jobs by jobType, but exclude 'Other' jobs
+//                 // const grouped = jobsData.reduce((acc, job) => {
+//                 //     if (job.jobType) { // Exclude jobs without a jobType
+//                 //         const type = job.jobType;
+//                 //         if (!acc[type]) {
+//                 //             acc[type] = [];
+//                 //         }
+//                 //         acc[type].push(job);
+//                 //     }
+//                 //     return acc;
+//                 // }, {});
 
-                setJobs(jobsData); // Set the jobs in state
-                // setGroupedJobs(grouped); // Set grouped jobs
-            } catch (error) {
-                console.error('Error fetching jobs:', error);
-                setError('Could not fetch jobs, please try again later.'); // Set error message
-            } finally {
-                setLoading(false); // Stop loading after fetch
-            }
-        };
+//                 setJobs(jobsData); // Set the jobs in state
+//                 // setGroupedJobs(grouped); // Set grouped jobs
+//             } catch (error) {
+//                 console.error('Error fetching jobs:', error);
+//                 setError('Could not fetch jobs, please try again later.'); // Set error message
+//             } finally {
+//                 setLoading(false); // Stop loading after fetch
+//             }
+//         };
 
-        fetchJobs();
-    }, []); // Run once on component mount
+//         fetchJobs();
+//     }, []); // Run once on component mount
 
-    return (
-        <>
-        <Welcome />
-        <div>
+//     return (
+//         <>
+//         <Welcome />
+//         <div>
             
-            <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Carear Jobs From Here!...</h1>
-            {/* Section to show all jobs */}
-            <section className="job-cards">
-                <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
+//             <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Search Your Carear Jobs From Here!...</h1>
+//             {/* Section to show all jobs */}
+//             <section className="job-cards">
+//                 <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
 
 
-                {loading ? (
-                    <Spinner /> // Show spinner while loading
-                ) : error ? (
-                    <p className="error">{error}</p> // Show error message if there's an error
-                ) : (
-                    <div className="carts">
-                        {jobs.map((job) => (
-                            <Card key={job._id} job={job} />
-                        ))}
-                    </div>
-                )}
-            </section>
+//                 {loading ? (
+//                     <Spinner /> // Show spinner while loading
+//                 ) : error ? (
+//                     <p className="error">{error}</p> // Show error message if there's an error
+//                 ) : (
+//                     <div className="carts">
+//                         {jobs.map((job) => (
+//                             <Card key={job._id} job={job} />
+//                         ))}
+//                     </div>
+//                 )}
+//             </section>
 
-            <div>
+//             <div>
             
            
-            <Fresherss/>
-            <Experiencess/>
-            <Internshipss/>
-            <OffCampuss/>
-            </div>
+//             <Fresherss/>
+//             <Experiencess/>
+//             <Internshipss/>
+//             <OffCampuss/>
+//             </div>
             
           
-            {/* <section className="grouped-job-cards">
-                {Object.keys(groupedJobs).map((jobType) => (
-                    <div key={jobType} className="job-group">
-                        <Link to={`/${jobType.toLowerCase()}`} className="job-group-heading-link">
-                            <h2 className="job-group-heading">{jobType}</h2>
-                        </Link>
-                        <div className="job-group-cards">
-                            {groupedJobs[jobType].map((job) => (
-                                <Link to={`/job/${job._id}`} key={job._id} className="HomesJobidLink">
-                                    <div className="job-card">
-                                        <img src={job.imageUrl} alt={job.title} className="job-image" />
-                                        <h3 className="job-title">{job.title}</h3>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </section> */}
-        </div>
-        </>
-    );
-};
+//             {/* <section className="grouped-job-cards">
+//                 {Object.keys(groupedJobs).map((jobType) => (
+//                     <div key={jobType} className="job-group">
+//                         <Link to={`/${jobType.toLowerCase()}`} className="job-group-heading-link">
+//                             <h2 className="job-group-heading">{jobType}</h2>
+//                         </Link>
+//                         <div className="job-group-cards">
+//                             {groupedJobs[jobType].map((job) => (
+//                                 <Link to={`/job/${job._id}`} key={job._id} className="HomesJobidLink">
+//                                     <div className="job-card">
+//                                         <img src={job.imageUrl} alt={job.title} className="job-image" />
+//                                         <h3 className="job-title">{job.title}</h3>
+//                                     </div>
+//                                 </Link>
+//                             ))}
+//                         </div>
+//                     </div>
+//                 ))}
+//             </section> */}
+//         </div>
+//         </>
+//     );
+// };
 
-export default Home;
+// export default Home;
 
 
 

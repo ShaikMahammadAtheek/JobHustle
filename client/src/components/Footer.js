@@ -10,7 +10,7 @@ const Footer = () => {
                  */}
                 <i className="footer-name">JobHustle</i>
             </div>
-            <div className="footer-links">
+            {/* <div className="footer-links">
                 <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WHATSAPP" />
                 </a>
@@ -23,12 +23,16 @@ const Footer = () => {
                 <a href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="X (formerly Twitter)" />
                 </a>
-            </div>
+            </div> */}
             <div className="footer-about">
                 <i>About us</i>
+                <br />
+                <br />
+                <i>Job site for Freshers and Experice who are looking for job opportunities. Latest Fresher Jobs, Experience Jobs and Internships etcs.</i>
             </div>
+            <br />
             <div className="footer-copyright">
-                <i>Copyright © JobHustles. All rights reserved.</i>
+                <i>Copyright © JobHustles. All rights reserved.</i> 
             </div>
         </footer>
     );
