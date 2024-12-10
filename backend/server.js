@@ -11,6 +11,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { SitemapStream, streamToPromise } = require('sitemap');
 const jobRoutes = require('./routes/jobRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 const dotenv = require('dotenv'); 
@@ -41,12 +42,12 @@ connection.once('open', () => {
 
 
 // // Middleware
-// app.use(cors());
+app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
 
-app.use(cors({origin: process.env.CORS_ORIGIN}));
+// app.use(cors({origin: process.env.CORS_ORIGIN}));
 
 
 // Allow CORS for specific origins (you can update the array of allowed origins as needed)
@@ -228,30 +229,6 @@ app.use('/api/feedback', feedbackRoutes);
 
 
 
-// Sitemap route
-// app.get('/sitemap.xml', async (req, res) => {
-//   try {
-//     const sitemap = new SitemapStream({ hostname: 'https://jobhustles.com' });
-
-//     // Static routes
-//     sitemap.write({ url: '/', changefreq: 'daily', priority: 1.0 });
-//     sitemap.write({ url: '/freshers', changefreq: 'weekly', priority: 0.8 });
-//     sitemap.write({ url: '/offcampus', changefreq: 'weekly', priority: 0.8 });
-
-//     // Dynamic routes from the database
-//     const jobs = await Job.find();
-//     jobs.forEach(job => {
-//       sitemap.write({ url: `/jobs/${job.slug}`, changefreq: 'weekly', priority: 0.7 });
-//     });
-
-//     sitemap.end();
-//     const sitemapXml = await streamToPromise(sitemap);
-//     res.header('Content-Type', 'application/xml');
-//     res.send(sitemapXml.toString());
-//   } catch (error) {
-//     res.status(500).end();
-//   }
-// });
 
 
 
@@ -270,6 +247,47 @@ app.use('/api/feedback', feedbackRoutes);
 // app.use((req, res) => {
 //   res.status(404).json({ error: 'Page not found' });
 // });
+
+
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    // Initialize the SitemapStream with your site URL
+    const sitemap = new SitemapStream({ hostname: 'https://api.jobhustles.com' }); // Replace with your production URL when ready
+
+    // Static URLs (like your homepage and other important pages)
+    sitemap.write({ url: '/', changefreq: 'daily', priority: 1.0 });
+    sitemap.write({ url: '/api/home', changefreq: 'daily', priority: 0.8 });
+    sitemap.write({ url: '/api/offcampus', changefreq: 'daily', priority: 0.7 });
+    sitemap.write({ url: '/api/internships', changefreq: 'daily', priority: 0.7 });
+    sitemap.write({ url: '/api/freshers', changefreq: 'daily', priority: 0.7 });
+    sitemap.write({ url: '/api/experience', changefreq: 'daily', priority: 0.7 });
+    sitemap.write({ url: '/api/cities', changefreq: 'monthly', priority: 0.5 });
+
+    // Dynamic URLs (for example, job pages)
+    const jobs = await Job.find().select('_id createdAt');  // Fetch job IDs and createdAt for lastmod
+    jobs.forEach(job => {
+      const lastModified = job.createdAt.toISOString(); // Convert the 'createdAt' field to ISO string
+      sitemap.write({
+        url: `/api/home/${job._id}`,
+        changefreq: 'weekly',
+        priority: 0.6,
+        lastmod: lastModified // Add lastmod field
+      });
+    });
+
+    sitemap.end(); // End the sitemap stream
+
+    // Convert the sitemap stream to a string and send it as XML
+    const xml = await streamToPromise(sitemap).then(sm => sm.toString());
+    
+    // Set the content type to XML and send the sitemap
+    res.header('Content-Type', 'application/xml');
+    res.send(xml);
+  } catch (err) {
+    console.error('Error generating sitemap:', err);
+    res.status(500).send({ error: 'Failed to generate sitemap' });
+  }
+});
 
 
 // Server listening
