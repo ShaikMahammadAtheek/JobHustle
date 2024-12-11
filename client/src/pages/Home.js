@@ -34,10 +34,10 @@ const Home = () => {
   }, []); // Run once on component mount
 
   // SEO metadata for the Home page
-  const pageTitle = "JobHustles - Freshers Job Portal for job Opportunities and Career Advice";
-  const pageDescription = "Find the latest job openings, internships, and career advice at JobHustles. Join our community to boost your career!";
-  const pageUrl = `${window.location.origin}/home`; // Dynamic URL for SEO
-  const pageImage = `${window.location.origin}/images/logo.jpg`; // Default image for SEO
+  //const pageTitle = "JobHustles - Freshers Job Portal for job Opportunities and Career Advice";
+  //const pageDescription = "Find the latest job openings, internships, and career advice at JobHustles. Join our community to boost your career!";
+  //const pageUrl = `${window.location.origin}/home`; // Dynamic URL for SEO
+  //const pageImage = `${window.location.origin}/jh.png`; // Default image for SEO
 
   // Structured Data for Job Portal (JSON-LD)
   const structuredData = {
@@ -45,11 +45,13 @@ const Home = () => {
     "@type": "Organization",
     "name": "JobHustles",
     "url": "https://jobhustles.com",
-    "logo": "https://jobhustles.com/images/logo.jpg",
+    "logo": `${window.location.origin}/jh.png`,
     "sameAs": [
-      "https://www.facebook.com/JobHustles",
-      "https://www.instagram.com/jobhustles",
-      "https://www.linkedin.com/company/jobhustles"
+        "https://t.me/Jobs_hustle",
+        "https://www.instagram.com/jobhustles_/profilecard/?igsh=MXhzZng3bm56cTBxZA==",
+        "https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P",
+        "https://www.linkedin.com/company/jobhustles",
+        "https://twitter.com/jobhustles"
     ]
   };
 
@@ -57,24 +59,48 @@ const Home = () => {
     <>
       {/* React Helmet for SEO optimization */}
       <Helmet>
-        <meta charset="UTF-8" />
+        {/* <meta charset="UTF-8" />
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="job portal, career opportunities, internships, job listings, JobHustles" />
 
-        {/* Open Graph (OG) Tags for Facebook/LinkedIn */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={pageImage} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
 
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={pageImage} />
+        <meta name="twitter:image" content={pageImage} /> */}
 
+
+<meta charset="UTF-8" />
+        <title>JobHustles - Best Job Portal for Freshers, Internships & Career Opportunities</title>
+        <meta 
+          name="description" 
+          content="JobHustles is the best job portal for freshers and professionals. Find the latest job openings, internships, career advice, and job opportunities in various industries. Start your career today with JobHustles!"
+        />
+        <meta 
+          name="keywords" 
+          content="job portal, freshers job, internships, job opportunities, career advice, job listings, online jobs, career growth, job search, full-time jobs, part-time jobs, entry-level jobs, JobHustles"
+        />
+        <meta property="og:title" content="JobHustles - Best Job Portal for Freshers, Internships & Career Opportunities" />
+        <meta 
+          property="og:description" 
+          content="Discover top job openings and internships for freshers and professionals. Explore career advice, job opportunities in various fields, and more at JobHustles."
+        />
+        <meta property="og:image" content={`${window.location.origin}/jh.png`} />
+        <meta property="og:url" content={`${window.location.origin}/home`} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="JobHustles - Best Job Portal for Freshers, Internships & Career Opportunities" />
+        <meta 
+          name="twitter:description" 
+          content="Find job openings, internships, and career advice at JobHustles. Your career journey starts here."
+        />
+        <meta name="twitter:image" content={`${window.location.origin}/jh.png`} />
         {/* Structured Data for Job Portal */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

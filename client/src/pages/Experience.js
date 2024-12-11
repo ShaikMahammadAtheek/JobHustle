@@ -64,14 +64,34 @@ const Experience = () => {
   return (
     <div>
       <Helmet>
-        <title>Experience Jobs | JobHustles</title>
+        {/* <title>Experience Jobs | JobHustles</title>
         <meta name="description" content="Find the latest job opportunities for Experience. Get job notifications, internships, and placement materials at JobHustles." />
         <meta name="keywords" content="fresher jobs, internships, job opportunities, job hustles, placement materials" />
         <meta property="og:title" content="Experience Jobs | JobHustles" />
         <meta property="og:description" content="Join JobHustles to find Experience jobs and internships across various industries." />
         <meta property="og:image" content="path_to_image_or_logo" />
+        <meta property="og:url" content="https://jobhustles.com/experience" /> */}
+
+        <title>Latest Experience Jobs & Career Opportunities | JobHustles</title>
+
+        <meta name="description" content="Discover the latest experience-level job openings and career opportunities across various industries. Apply to your next job today at JobHustles." />
+
+        <meta name="keywords" content="experience jobs, career opportunities, job listings, hiring, job search, experience jobs India, entry-level jobs, job board, remote jobs, full-time jobs, part-time jobs" />
+
+        <meta property="og:title" content="Experience Jobs & Career Opportunities | JobHustles" />
+        <meta property="og:description" content="Find and apply for experience-level jobs across multiple sectors. Start your career journey with JobHustles today!" />
+        <meta property="og:image" content={`${window.location.origin}/jh.png`} /> {/* Correct path to logo in the public folder */}
         <meta property="og:url" content="https://jobhustles.com/experience" />
-        
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="JobHustles" />
+
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:title" content="Experience Jobs & Career Opportunities | JobHustles" />
+        <meta name="twitter:description" content="Search for the latest experience-level jobs in various industries. Apply and get hired with JobHustles." />
+        <meta name="twitter:image" content={`${window.location.origin}/jh.png`} /> {/* Correct path to logo in the public folder */}
+        <meta name="twitter:card" content="summary_large_image" />
+
         {/* JSON-LD Schema for Job Postings */}
         <script type="application/ld+json">
           {JSON.stringify(jobSchema)}

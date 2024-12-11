@@ -1,6 +1,6 @@
 //Main code
 
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,6 +20,23 @@ import './App.css';
 
 //<Route path="/job/:id" element={<JobNotification />} />
 const App = () => {
+    // State to track the current path
+    const [isSitemapPage, setIsSitemapPage] = useState(false);
+
+    // Effect to handle redirection if the path is /sitemap.xml
+    useEffect(() => {
+      if (window.location.pathname === '/sitemap.xml') {
+        setIsSitemapPage(true);
+      }
+    }, []); // Empty dependency array ensures the effect runs only once on mount
+  
+    // If on /sitemap.xml, perform the redirection
+    useEffect(() => {
+      if (isSitemapPage) {
+        window.location.href = 'https://api.jobhustles.com/sitemap.xml'; // Redirect to the full URL
+      }
+    }, [isSitemapPage]); // Trigger effect only when isSitemapPage changes
+
   return (
     <div className='bgcol'>
     <Router >
@@ -81,6 +98,7 @@ const App = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/job/:id/details" element={<JobDetails />} />
         {/* <Route component={NotFound} /> */}
+        
       </Routes>
       <Footer />
     </Router>

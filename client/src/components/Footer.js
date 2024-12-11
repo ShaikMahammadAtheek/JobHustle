@@ -8,7 +8,7 @@ const Footer = () => {
          <div className="logo"></div>
                  <div ><img src={top} alt="" className="logos" /></div>
                  */}
-                <i className="footer-name">JobHustle</i>
+                <i className="footer-name">JobHustles</i>
             </div>
             {/* <div className="footer-links">
                 <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer">

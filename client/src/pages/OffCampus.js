@@ -65,7 +65,7 @@ const OffCampus = () => {
     <>
       {/* React Helmet for SEO optimization */}
       <Helmet>
-        <title>{pageTitle}</title>
+        {/* <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="off-campus jobs, student jobs, career opportunities, job listings, remote jobs" />
         <meta property="og:title" content={pageTitle} />
@@ -75,8 +75,25 @@ const OffCampus = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={pageImage} />
-
+        <meta name="twitter:image" content={pageImage} /> */}
+        <title>Off-Campus Jobs for Students | Explore Career Opportunities at JobHustles</title>
+              
+        <meta name="description" content="Explore a wide range of off-campus job opportunities for students and freshers. Find your perfect job, apply easily, and kickstart your career today at JobHustles." />
+              
+        <meta name="keywords" content="off-campus jobs, student jobs, remote jobs for students, part-time jobs for students, off-campus jobs for freshers, work from home jobs for students, off-campus job opportunities, jobs for freshers 2024, remote career opportunities, off-campus job listings, part-time job opportunities for students, freshers job openings, remote jobs for college students, flexible work for students, apply for off-campus jobs, off-campus part-time jobs, job hustles off-campus jobs, job opportunities for freshers, off-campus internships, work from home student jobs" />
+              
+        <meta property="og:title" content="Off-Campus Jobs for Students | Explore Career Opportunities at JobHustles" />
+        <meta property="og:description" content="Browse remote off-campus job opportunities for students and freshers. Get career-ready by applying to the latest jobs in various industries at JobHustles." />
+        <meta property="og:url" content="https://jobhustles.com/off-campus-jobs" />
+        <meta property="og:image" content={`${window.location.origin}/jh.png`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="JobHustles" />
+              
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:title" content="Off-Campus Jobs for Students | Explore Career Opportunities at JobHustles" />
+        <meta name="twitter:description" content="Looking for off-campus jobs? Find part-time, remote, and flexible job opportunities for students and freshers at JobHustles. Apply today and advance your career!" />
+        <meta name="twitter:image" content={`${window.location.origin}/jh.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
         {/* JSON-LD structured data for Off-Campus Jobs */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

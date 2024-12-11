@@ -37,9 +37,9 @@ const JobDetails = () => {
   }
 
   const jobDescription = job.jobDescription || {};
-  const jobTitle = job.title || "Job Details";
-  const jobDescriptionMeta = `${job.title} at ${job.company}: ${job.description}` || "Find detailed job information.";
-  const jobImage = job.imageUrl || `${window.location.origin}/images/logo.png`;
+  //const jobTitle = job.title || "Job Details";
+  //const jobDescriptionMeta = `${job.title} at ${job.company}: ${job.description}` || "Find detailed job information.";
+  const jobImage = job.imageUrl || `${window.location.origin}/jh.png`;
   const jobUrl = `${window.location.origin}/job/${job._id}`;
 
   // Structured Data for JobPosting (JSON-LD)
@@ -81,7 +81,7 @@ const JobDetails = () => {
     <>
       {/* React Helmet for SEO optimization */}
       <Helmet>
-        <title>{jobTitle} - Job Details</title>
+        {/* <title>{jobTitle} - Job Details</title>
         <meta name="description" content={jobDescriptionMeta} />
         <meta name="keywords" content={`${job.title}, ${job.company}, job details, job description, career opportunities`} />
         <meta property="og:title" content={`${jobTitle} - Job Details`} />
@@ -91,7 +91,34 @@ const JobDetails = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${jobTitle} - Job Details`} />
         <meta name="twitter:description" content={jobDescriptionMeta} />
+        <meta name="twitter:image" content={jobImage} /> */}
+
+
+<title>{job.title} - Job Details at JobHustles | Apply Now</title>
+        <meta 
+          name="description" 
+          content={`Explore detailed job information for the position of ${job.title} at ${job.company}. Learn about qualifications, experience requirements, salary, and apply now for a career with ${job.company}.`} 
+        />
+        <meta 
+          name="keywords" 
+          content={`${job.title}, ${job.company}, job details, career opportunities, job description, apply for ${job.title}, ${job.title} job, job listing, career job openings, job opportunities ${job.company}, job salary ${job.title}, job responsibilities, apply now for ${job.title}`} 
+        />
+        <meta property="og:title" content={`${job.title} - Job Details at JobHustles`} />
+        <meta 
+          property="og:description" 
+          content={`Find detailed information about the ${job.title} position at ${job.company}, including job requirements, salary, experience, and how to apply. Start your career journey at JobHustles today.`} 
+        />
+        <meta property="og:image" content={jobImage} />
+        <meta property="og:url" content={jobUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="JobHustles" />
+        <meta name="twitter:title" content={`${job.title} - Job Details at JobHustles`} />
+        <meta 
+          name="twitter:description" 
+          content={`Looking for a job in ${job.title}? Check out the job details, responsibilities, qualifications, salary and apply for ${job.title} at ${job.company} on JobHustles.`} 
+        />
         <meta name="twitter:image" content={jobImage} />
+        <meta name="twitter:card" content="summary_large_image" />
 
         {/* JSON-LD structured data for Job Posting */}
         <script type="application/ld+json">

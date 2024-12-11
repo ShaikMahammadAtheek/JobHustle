@@ -59,13 +59,34 @@ const Internships = () => {
     <div>
       {/* SEO with Helmet */}
       <Helmet>
-        <title>Internships | JobHustles</title>
+        {/* <title>Internships | JobHustles</title>
         <meta name="description" content="Find the latest internships across various industries. Apply for internships and gain real-world experience at JobHustles." />
         <meta name="keywords" content="internships, internship opportunities, freshers internships, job hustles" />
         <meta property="og:title" content="Internships | JobHustles" />
         <meta property="og:description" content="Browse the latest internships for freshers and students at JobHustles. Gain practical experience with top companies." />
         <meta property="og:image" content="path_to_image_or_logo" />
+        <meta property="og:url" content="https://jobhustles.com/internships" /> */}
+
+
+        <title>Latest Internships & Career Opportunities for Freshers | JobHustles</title>
+
+        <meta name="description" content="Browse the latest internships for freshers and college students. Gain valuable experience with top companies in various industries. Apply now on JobHustles!" />
+
+        <meta name="keywords" content="internships for freshers, internships for students, entry-level internships, paid internships, summer internships, internships India, internships for freshers 2024, remote internships for freshers, internships with stipend, best internships for freshers, college internships, internships in technology, internship opportunities for freshers, internships in marketing, internships for engineering students, internships for non-technical freshers, internship application for students, apply for internships online, job hustles internships, job opportunities internships India" />
+
+        <meta property="og:title" content="Latest Internships & Career Opportunities for Freshers | JobHustles" />
+        <meta property="og:description" content="Find internships for freshers, students, and recent graduates. Gain real-world experience in various industries and top companies. Apply now on JobHustles." />
+        <meta property="og:image" content={`${window.location.origin}/jh.png`} />
         <meta property="og:url" content="https://jobhustles.com/internships" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="JobHustles" />
+
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:title" content="Latest Internships & Career Opportunities for Freshers | JobHustles" />
+        <meta name="twitter:description" content="Search for internships for freshers and students across industries. Apply today and gain valuable experience with JobHustles." />
+        <meta name="twitter:image" content={`${window.location.origin}/jh.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
         
         {/* JSON-LD Schema for Internship Postings */}
         <script type="application/ld+json">

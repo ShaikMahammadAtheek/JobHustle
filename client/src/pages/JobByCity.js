@@ -67,14 +67,42 @@ const JobByCity = () => {
     <div>
       {/* SEO with Helmet */}
       <Helmet>
-        <title>Jobs in {city} | JobHustles</title>
+        {/* <title>Jobs in {city} | JobHustles</title>
         <meta name="description" content={`Find the latest job opportunities in ${city}. Apply for jobs in various industries at JobHustles.`} />
         <meta name="keywords" content={`jobs in ${city}, job opportunities, ${city} jobs, job hustles`} />
         <meta property="og:title" content={`Jobs in ${city} | JobHustles`} />
         <meta property="og:description" content={`Browse job listings in ${city} and apply for top job opportunities at JobHustles.`} />
         <meta property="og:image" content="path_to_image_or_logo" />
         <meta property="og:url" content={`https://jobhustles.com/job-by-city/${city}`} />
-        
+         */}
+
+<title>Find Jobs in {city} | Top Career Opportunities at JobHustles</title>
+        <meta 
+          name="description" 
+          content={`Discover the latest job opportunities in ${city} and apply for exciting roles across various industries. Find full-time, part-time, remote, and flexible job openings at JobHustles.`} 
+        />
+        <meta 
+          name="keywords" 
+          content={`${city} jobs, jobs in ${city}, job opportunities in ${city}, part-time jobs ${city}, full-time jobs ${city}, job listings ${city}, careers in ${city}, work in ${city}, apply for jobs ${city}, JobHustles jobs`} 
+        />
+        <meta property="og:title" content={`Find Jobs in ${city} | Top Career Opportunities at JobHustles`} />
+        <meta 
+          property="og:description" 
+          content={`Browse top job opportunities in ${city}, apply for the latest jobs in various fields, and jumpstart your career today at JobHustles.`} 
+        />
+        <meta property="og:image" content={`${window.location.origin}/jh.png`} />
+        <meta property="og:url" content={`https://jobhustles.com/job-by-city/${city}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="JobHustles" />
+        <meta name="twitter:title" content={`Find Jobs in ${city} | Top Career Opportunities at JobHustles`} />
+        <meta 
+          name="twitter:description" 
+          content={`Looking for jobs in ${city}? Explore job listings, career opportunities, and apply for positions that fit your skills and experience. Find your dream job today at JobHustles.`} 
+        />
+        <meta name="twitter:image" content={`${window.location.origin}/jh.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+
+         
         {/* JSON-LD Schema for Job Postings */}
         <script type="application/ld+json">
           {JSON.stringify(jobSchema)}
