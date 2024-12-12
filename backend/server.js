@@ -444,6 +444,93 @@ app.use('/api/feedback', feedbackRoutes);
 
 
 
+// app.get('/sitemap.xml', async (req, res) => {
+//   try {
+//     // Set the hostname to your site URL (e.g., 'http://localhost:5000' for local, 'https://jobhustles.com' for production)
+//     const hostname = 'https://jobhustles.com'; // Change this to your production hostname for deployment
+
+//     // Fetch distinct cities from the database
+//     const cities = await Job.distinct('location');
+    
+//     // Fetch jobs data to get job URLs
+//     const jobs = await Job.find().select('_id createdAt location');
+    
+//     // Create URLs for each city
+//     const cityUrls = cities.map(city => ({
+//       url: `${hostname}/job-by-city/${city}`,
+//       lastModified: new Date().toISOString(), // You can adjust this depending on when the city was last modified or updated
+//     }));
+
+//     // Create URLs for individual job pages
+//     const jobUrls = jobs.map(job => ({
+//       url: `${hostname}/job/${job._id}`,
+//       lastModified: job.createdAt.toISOString(), // Convert 'createdAt' to ISO string
+//     }));
+
+//     // Static URLs (like homepage and other important pages)
+//     const staticUrls = [
+//       { url: `${hostname}/`, lastModified: new Date().toISOString() },
+//       { url: `${hostname}/off-campus`, lastModified: new Date().toISOString() },
+//       { url: `${hostname}/internships`, lastModified: new Date().toISOString() },
+//       { url: `${hostname}/freshers`, lastModified: new Date().toISOString() },
+//       { url: `${hostname}/experience`, lastModified: new Date().toISOString() },
+//       { url: `${hostname}/cities`, lastModified: new Date().toISOString() }
+//     ];
+
+//     // Combine static URLs, job URLs, and city URLs
+//     const allUrls = [...staticUrls, ...jobUrls, ...cityUrls];
+
+//     // Generate an HTML response with clickable URLs
+//     let htmlContent = `
+//       <html>
+//         <head>
+//           <title>XML Sitemap</title>
+//         </head>
+//         <body>
+//           <h1>XML Sitemap</h1>
+//           <p>Generated for development/testing. This is an XML Sitemap meant for consumption by search engines.</p>
+//           <table border="1">
+//             <thead>
+//               <tr>
+//                 <th>Sitemap</th>
+//                 <th>Last Modified</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//     `;
+
+//     // Add the URLs in a clickable format
+//     allUrls.forEach(urlInfo => {
+//       htmlContent += `
+//         <tr>
+//           <td><a href="${urlInfo.url}" target="_blank">${urlInfo.url}</a></td>
+//           <td>${new Date(urlInfo.lastModified).toLocaleString()}</td>
+//         </tr>
+//       `;
+//     });
+
+//     htmlContent += `
+//             </tbody>
+//           </table>
+//         </body>
+//       </html>
+//     `;
+
+//     res.header('Content-Type', 'text/html');
+//     res.send(htmlContent);
+//   } catch (err) {
+//     console.error('Error generating sitemap:', err);
+//     res.status(500).send({ error: 'Failed to generate sitemap' });
+//   }
+// });
+
+
+
+
+
+
+
+
 app.get('/sitemap.xml', async (req, res) => {
   try {
     // Set the hostname to your site URL (e.g., 'http://localhost:5000' for local, 'https://jobhustles.com' for production)
@@ -457,73 +544,58 @@ app.get('/sitemap.xml', async (req, res) => {
     
     // Create URLs for each city
     const cityUrls = cities.map(city => ({
-      url: `${hostname}/job-by-city/${city}`,
-      lastModified: new Date().toISOString(), // You can adjust this depending on when the city was last modified or updated
+      loc: `${hostname}/job-by-city/${city}`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'daily',  // You can adjust this depending on the update frequency of cities
+      priority: 0.7,        // Set an appropriate priority for these URLs
     }));
 
     // Create URLs for individual job pages
     const jobUrls = jobs.map(job => ({
-      url: `${hostname}/job/${job._id}`,
-      lastModified: job.createdAt.toISOString(), // Convert 'createdAt' to ISO string
+      loc: `${hostname}/job/${job._id}`,
+      lastmod: job.createdAt.toISOString(), // Convert 'createdAt' to ISO string
+      changefreq: 'weekly',
+      priority: 0.8,
     }));
 
     // Static URLs (like homepage and other important pages)
     const staticUrls = [
-      { url: `${hostname}/`, lastModified: new Date().toISOString() },
-      { url: `${hostname}/off-campus`, lastModified: new Date().toISOString() },
-      { url: `${hostname}/internships`, lastModified: new Date().toISOString() },
-      { url: `${hostname}/freshers`, lastModified: new Date().toISOString() },
-      { url: `${hostname}/experience`, lastModified: new Date().toISOString() },
-      { url: `${hostname}/cities`, lastModified: new Date().toISOString() }
+      { loc: `${hostname}/`, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 },
+      { loc: `${hostname}/off-campus`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/internships`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/freshers`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/experience`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/cities`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.6 },
     ];
 
     // Combine static URLs, job URLs, and city URLs
     const allUrls = [...staticUrls, ...jobUrls, ...cityUrls];
 
-    // Generate an HTML response with clickable URLs
-    let htmlContent = `
-      <html>
-        <head>
-          <title>XML Sitemap</title>
-        </head>
-        <body>
-          <h1>XML Sitemap</h1>
-          <p>Generated for development/testing. This is an XML Sitemap meant for consumption by search engines.</p>
-          <table border="1">
-            <thead>
-              <tr>
-                <th>Sitemap</th>
-                <th>Last Modified</th>
-              </tr>
-            </thead>
-            <tbody>
-    `;
+    // Generate the XML Sitemap format
+    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-    // Add the URLs in a clickable format
+    // Add all URLs to the sitemap
     allUrls.forEach(urlInfo => {
-      htmlContent += `
-        <tr>
-          <td><a href="${urlInfo.url}" target="_blank">${urlInfo.url}</a></td>
-          <td>${new Date(urlInfo.lastModified).toLocaleString()}</td>
-        </tr>
-      `;
+      sitemap += `
+      <url>
+        <loc>${urlInfo.loc}</loc>
+        <lastmod>${urlInfo.lastmod}</lastmod>
+        <changefreq>${urlInfo.changefreq}</changefreq>
+        <priority>${urlInfo.priority}</priority>
+      </url>\n`;
     });
 
-    htmlContent += `
-            </tbody>
-          </table>
-        </body>
-      </html>
-    `;
+    sitemap += `</urlset>\n`;
 
-    res.header('Content-Type', 'text/html');
-    res.send(htmlContent);
+    // Set the response header to XML
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
   } catch (err) {
     console.error('Error generating sitemap:', err);
     res.status(500).send({ error: 'Failed to generate sitemap' });
   }
 });
-
 
 
 // Server listening
