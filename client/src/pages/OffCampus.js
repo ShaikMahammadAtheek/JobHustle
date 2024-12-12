@@ -34,32 +34,45 @@ const OffCampus = () => {
   const pageUrl = `${window.location.origin}/off-campus-jobs`; // Dynamic URL for SEO
   const pageImage = `${window.location.origin}/images/logo.png`; // Default image for SEO
 
-  // Structured Data for Job Posting (JSON-LD)
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": pageUrl,
-    "image": pageImage,
-    "mainEntity": {
+    // Creating the JSON-LD Schema data for SEO
+    const jobSchema = jobs.map((job) => ({
+      "@context": "https://schema.org",
       "@type": "JobPosting",
-      "title": "Off-Campus Jobs",
-      "description": pageDescription,
+      "title": job.title,
+      "description": job.description,
+      "datePosted": job.postedDate, // Date the job was posted
       "hiringOrganization": {
         "@type": "Organization",
-        "name": "Various Hiring Companies"
+        "name": job.company, // Company name from job model
+        "sameAs": job.companyUrl || "", // Optional: if you have a URL for the company
       },
-      "employmentType": "Part-time",
       "jobLocation": {
         "@type": "Place",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Remote"
+          "addressLocality": job.location, // Location from job model
+          "addressRegion": job.state,
+          "postalCode": job.postalCode,
+          "streetAddress": job.streetAddress
+        },
+      },
+      "baseSalary": job.salary ? {
+        "@type": "MonetaryAmount",
+        "currency": "INR", // Assuming salary is in INR, you can change it to USD or other currencies
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": 450000, // Salary from job model
+          "unitText": "YEAR" // or MONTH based on the type of salary
         }
-      }
-    }
-  };
+      } : undefined, // Only include baseSalary if salary is available
+      "employmentType": job.jobType, // Type of job: Full-time, Part-time, etc.
+      "url": job.applyNowLink || "", // Link to apply, from job model
+      "jobBenefits": job.jobDescription.benefits || [], // Benefits from jobDescription
+      "qualifications": job.jobDescription.qualifications || [], // Qualifications from jobDescription
+      "responsibilities": job.jobDescription.responsibilities || [], // Responsibilities from jobDescription
+      "validThrough": job.validThrough,
+    }));
+
 
   return (
     <>
@@ -94,10 +107,12 @@ const OffCampus = () => {
         <meta name="twitter:description" content="Looking for off-campus jobs? Find part-time, remote, and flexible job opportunities for students and freshers at JobHustles. Apply today and advance your career!" />
         <meta name="twitter:image" content={`${window.location.origin}/jh.png`} />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* JSON-LD structured data for Off-Campus Jobs */}
+        
+        {/* JSON-LD Schema for Job Postings */}
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {JSON.stringify(jobSchema)}
         </script>
+        
       </Helmet>
 
       <div>

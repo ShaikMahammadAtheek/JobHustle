@@ -49,13 +49,27 @@ const JobByCity = () => {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": city, // Location set to city
+        "addressLocality": job.location, // Location from job 
+        "addressRegion": job.state,
+        "postalCode": job.postalCode,
+        "streetAddress": job.streetAddress
       },
     },
+    "baseSalary": job.salary ? {
+      "@type": "MonetaryAmount",
+      "currency": "INR", // Assuming salary is in INR, you can change it to USD or other currencies
+      "value": {
+        "@type": "QuantitativeValue",
+        "value": 400000, // Salary from job model
+        "unitText": "YEAR" // or MONTH based on the type of salary
+      }
+    } : undefined, // Only include baseSalary if salary is available
     "employmentType": job.jobType, // Type of job: Full-time, Part-time, etc.
     "url": job.applyNowLink || "", // Link to apply, from job model
+    "jobBenefits": job.jobDescription.benefits || [], // Benefits from jobDescription
     "qualifications": job.jobDescription.qualifications || [], // Qualifications from jobDescription
     "responsibilities": job.jobDescription.responsibilities || [], // Responsibilities from jobDescription
+    "validThrough": job.validThrough,
   }));
 
   // Display a loading spinner if data is still loading

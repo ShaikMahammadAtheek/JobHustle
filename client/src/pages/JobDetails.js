@@ -58,24 +58,29 @@ const JobDetails = () => {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": job.location
+        "addressLocality": job.location,
+        "addressRegion": job.state, // Added state for addressRegion
+        "postalCode": job.postalCode, // Added postalCode
+        "streetAddress": job.streetAddress // Added streetAddress
       }
     },
     "employmentType": job.jobType,
-    "url": jobUrl,
-    "qualifications": job.qualification || '',
-    "responsibilities": jobDescription.responsibilities || '',
+    "url": job.applyNowLink || "",
+    "qualifications": job.jobDescription.qualifications || '',
+    "responsibilities": job.jobDescription.responsibilities || '',
     "experienceRequirements": job.experience || '',
-    "salaryCurrency": job.salaryCurrency || "USD",
+    "salaryCurrency": "INR", // Assuming salary is in INR; you can change this as needed
     "baseSalary": {
       "@type": "MonetaryAmount",
       "value": {
         "@type": "QuantitativeValue",
-        "value": job.salary,
+        "value": 450000, // Example salary, change according to your data (for 6 LPA)
         "unitText": "YEAR"
       }
-    }
+    },
+    "validThrough": job.validThrough // Assuming the job has an expiration date (validThrough)
   };
+  
 
   return (
     <>

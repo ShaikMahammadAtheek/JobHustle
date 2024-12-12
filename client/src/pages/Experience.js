@@ -43,6 +43,9 @@ const Experience = () => {
       "address": {
         "@type": "PostalAddress",
         "addressLocality": job.location, // Location from job model
+        "addressRegion": job.state,
+        "postalCode": job.postalCode,
+        "streetAddress": job.streetAddress
       },
     },
     "baseSalary": job.salary ? {
@@ -50,7 +53,7 @@ const Experience = () => {
       "currency": "INR", // Assuming salary is in INR, you can change it to USD or other currencies
       "value": {
         "@type": "QuantitativeValue",
-        "value": job.salary, // Salary from job model
+        "value": 450000, // Salary from job model
         "unitText": "YEAR" // or MONTH based on the type of salary
       }
     } : undefined, // Only include baseSalary if salary is available
@@ -59,6 +62,7 @@ const Experience = () => {
     "jobBenefits": job.jobDescription.benefits || [], // Benefits from jobDescription
     "qualifications": job.jobDescription.qualifications || [], // Qualifications from jobDescription
     "responsibilities": job.jobDescription.responsibilities || [], // Responsibilities from jobDescription
+    "validThrough": job.validThrough,
   }));
 
   return (
