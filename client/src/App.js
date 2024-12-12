@@ -1,7 +1,7 @@
 //Main code
 
 import React, { useState, useEffect }  from 'react';
-import { BrowserRouter as Router, Route, Routes,useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,  } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -37,17 +37,7 @@ const App = () => {
       }
     }, [isSitemapPage]); // Trigger effect only when isSitemapPage changes
 
-     // UseLocation hook to track page views
-  const location = useLocation();
-
-  // Track page views whenever the route changes
-  useEffect(() => {
-    if (window.gtag) {
-      window.gtag('config', 'G-FY5538CY5Q', {
-        page_path: location.pathname + location.search,
-      });
-    }
-  }, [location]);
+     
 
   return (
     <div className='bgcol'>

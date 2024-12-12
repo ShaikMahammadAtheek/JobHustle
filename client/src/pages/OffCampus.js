@@ -29,10 +29,10 @@ const OffCampus = () => {
   }, []);
 
   // SEO metadata for the Off-Campus Jobs page
-  const pageTitle = "Off-Campus Jobs";
-  const pageDescription = "Explore a range of off-campus job opportunities available for students. Find your next career opportunity here.";
-  const pageUrl = `${window.location.origin}/off-campus-jobs`; // Dynamic URL for SEO
-  const pageImage = `${window.location.origin}/images/logo.png`; // Default image for SEO
+  //const pageTitle = "Off-Campus Jobs";
+  //const pageDescription = "Explore a range of off-campus job opportunities available for students. Find your next career opportunity here.";
+  //const pageUrl = `${window.location.origin}/off-campus-jobs`; // Dynamic URL for SEO
+  //const pageImage = `${window.location.origin}/images/logo.png`; // Default image for SEO
 
     // Creating the JSON-LD Schema data for SEO
     const jobSchema = jobs.map((job) => ({
