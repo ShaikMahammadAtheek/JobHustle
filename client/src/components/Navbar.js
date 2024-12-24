@@ -415,7 +415,8 @@ const Navbar = () => {
       </div>
 
       <div className={`navbar-enquiry ${isMobileMenuOpen ? 'hide-enquiry' : ''}`}>
-        <Link to="/support"><button className="enquiry-button sizeofbutton">Send Query →</button></Link>
+        {/* <Link to="/support"><button className="enquiry-button sizeofbutton">Send Query →</button></Link> */}
+        <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer"><button className="enquiry-button sizeofbutton">WhatssApp</button></a>
       </div>
 
       <div className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -454,7 +455,8 @@ const Navbar = () => {
             </li>
             <li><Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>Support</Link></li>
             <li>
-              <Link to="/support"><button className="enquiry-button sizeofbutton" onClick={() => setIsMobileMenuOpen(false)}>Send Query →</button></Link>
+              {/* <Link to="/support"><button className="enquiry-button sizeofbutton" onClick={() => setIsMobileMenuOpen(false)}>Send Query →</button></Link> */}
+              <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer"><button className="enquiry-button sizeofbutton" onClick={() => setIsMobileMenuOpen(false)}>Send Query →</button></a>
             </li>
           </ul>
         </ul>

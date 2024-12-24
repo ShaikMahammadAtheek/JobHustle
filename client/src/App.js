@@ -58,7 +58,7 @@ const App = () => {
                     <span style={{color:"red" , fontSize:'20px',fontWeight:"bold"}}>Join Here For Latest Job Updates</span>
                     
                 </a> */}
-      {/* <marquee className="whatteli">
+      <marquee className="whatteli">
   <a 
     href="https://t.me/Jobs_hustle" 
     target="_blank" 
@@ -68,12 +68,12 @@ const App = () => {
       textDecoration: 'none', 
       display: 'flex', 
       alignItems: 'center', 
-      gap: '8px' 
+      gap: '8px',
     }}
   >
     
     <span style={{ color: 'red', fontSize: '18px', fontWeight: 'bold' }} className='bujjikanna'>
-      Join Here For Latest Job Updates
+      Join Telegram/Whatsapp For Latest Job Updates
     </span>
     <img 
       src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
@@ -86,7 +86,7 @@ const App = () => {
       }} 
     />
   </a>
-</marquee> */}
+</marquee>
 
       
       <Routes>

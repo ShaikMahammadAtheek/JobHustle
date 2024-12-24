@@ -77,7 +77,7 @@ const Freshers = () => {
         <meta property="og:image" content="path_to_image_or_logo" />
         <meta property="og:url" content="https://jobhustles.com/freshers" /> */}
 
-        <title>Freshers Jobs, Internships & Career Opportunities | JobHustles</title>
+        <title>JobHustles-Freshers Jobs, Internships & Career Opportunities</title>
               
         <meta name="description" content="Explore freshers jobs, internships, and entry-level career opportunities across various industries. Start your career with top companies through JobHustles!" />
               
