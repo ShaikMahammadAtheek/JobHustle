@@ -42,7 +42,7 @@ const Welcome = () => {
     return (
         <div className="welcome-section">
             <div className="text-section">
-                <h1 className="welcomeheading">Welcome to JobHustles</h1>
+                <h1 className="welcomeheading bashmash">Welcome to JobHustles</h1>
                 <div className="equal">
                     <p className="normaltype">Get Job Like</p>
                     <div className="typing-container">

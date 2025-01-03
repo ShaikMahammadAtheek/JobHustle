@@ -1,0 +1,96 @@
+/* Container Styling */
+.latest-jobs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .latest-jobs-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Job List Styling */
+  .jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Job Card Styling */
+  .job-cards {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .job-cards:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left Section - Image */
+  .job-left-section {
+    flex: 0 0 150px; /* Fixed width for the image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job-thumbnail {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Right Section - Title */
+  .job-right-section {
+    flex: 1;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .job-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .job-cards {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+    }
+  
+    .job-left-section {
+      width: 100%; /* Image takes full width on small screens */
+    }
+  
+    .job-thumbnail {
+      height: 150px;
+      border-radius: 4px;
+    }
+  
+    .job-right-section {
+      padding: 10px 0 0;
+      align-items: flex-start;
+    }
+  
+    .job-title {
+      font-size: 16px;
+    }
+  }
+  

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 const Footer = () => {
     return (
@@ -24,9 +25,13 @@ const Footer = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="X (formerly Twitter)" />
                 </a>
             </div>
+            <div className="footer-nav">
+            <Link to="/about-us" className="footer-nav-item">AboutUs</Link>
+            <Link to="/contact-us" className="footer-nav-item">Contact</Link>
+            </div>
+            <br />
             <div className="footer-about">
-                <i>About us</i>
-                <br />
+                <i>About JobHustles</i>
                 <br />
                 <i>Job site for Freshers and Experice who are looking for job opportunities. Latest Fresher Jobs, Experience Jobs and Internships etcs.</i>
             </div>

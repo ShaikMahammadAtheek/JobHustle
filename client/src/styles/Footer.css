@@ -121,6 +121,19 @@ i {
     color: white;
 }
 
+.footer-nav-item {
+    margin: 0 15px;
+    color: rgb(232, 148, 22);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.footer-nav-item:hover {
+    color: #f6356f;
+    cursor: pointer;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .footer-logo {

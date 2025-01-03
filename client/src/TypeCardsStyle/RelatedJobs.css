@@ -1,0 +1,163 @@
+/* Base styles */
+.gap{
+    margin-top: 30px;
+    font-size: 50px;
+}
+.offcampus-container {
+    margin-bottom: 51px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+.inner-container {
+    display: flex;
+    justify-content: space-around;
+}
+.offcampus-section {
+    width: 1110px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+}
+.job-type-heading-link {
+    text-decoration: none;
+}
+.job-type-heading {
+    background-color: rgb(56, 61, 61);
+    height: 50px;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    align-items: center;
+    padding-left: 30px;
+}
+.job-type-main {
+    width: 1100px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* .job-type-card { display: flex ; width: 100%; justify-content: space-around; height: 187px; border: 2px solid, #db0a0a; border-radius: 10px; } */
+.job-type-cards {
+    display: flex;
+    width: 100%;
+    height: 187px;
+    /* border: 2px solid,black; */
+    border-radius:10px ;
+}
+.job-type-link:hover {
+    /* transform: scale(1.05); */
+    transition: transform 0.3s ease;
+    /* border: 2px solid,rgb(120, 89, 89); */
+}
+.job-type-link {
+   display: flex;
+   /* background-color: rgb(219, 245, 243); */
+   align-items: center;
+   width: 100%;
+   height: 187px;
+   text-decoration: none;
+   border-radius: 15px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease;
+}
+.job-type-image {
+    width: 200px;
+    height: 100%;
+    border-radius: 10px;
+    /* object-fit: cover; */
+}
+.job-type-title {
+    font-size: 20px;
+}
+
+
+/* Responsive Styles */
+
+/* For screens up to 1200px */
+@media (max-width: 1200px) {
+    .offcampus-section {
+        width: 90%;
+    }
+    .job-type-main {
+        width: 100%;
+    }
+    .job-type-card {
+        width: 380px;
+    }
+}
+
+/* For screens up to 992px */
+@media (max-width: 992px) {
+    .inner-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .job-type-heading {
+        font-size: 26px;
+        padding-left: 20px;
+    }
+    .job-type-card {
+        width: 358px;
+    }
+}
+
+/* For screens up to 768px */
+@media (max-width: 812px) {
+    .offcampus-section {
+        width: 95%;
+    }
+    .job-type-heading {
+        font-size: 24px;
+        height: 60px;
+        padding-left: 15px;
+    }
+    .job-type-card {
+        width: 100%;
+    }
+    .job-type-title {
+        font-size: 18px;
+    }
+    .job-type-image{
+        width: 350px;
+        margin-right: 8px;
+    }
+}
+
+/* For screens up to 576px (small mobile devices) */
+@media (max-width: 576px) {
+    .job-type-heading {
+        font-size: 20px;
+        height: 55px;
+        text-align: center;
+        padding-left: 0;
+    }
+    .job-type-main {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .job-type-card {
+        width: 100%;
+        height: 10px;
+        flex-direction: column;
+        height: auto;
+    }
+    .job-type-link {
+        flex-direction: row; /* Set the direction to column */
+        align-items: center;   /* Center align items in column layout */
+        height: 120px;
+    }
+    .job-type-title {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 10px;      /* Add margin for spacing below image */
+    }
+    .job-type-image {
+        width: 140px;
+        height: 100%;
+        border-radius: 10px;
+        margin-right: 8px;
+    }
+}

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../styles/JobDetails.css';
-import { Helmet } from 'react-helmet'; // Import React Helmet for dynamic meta tags
+import { Helmet } from 'react-helmet'; // Import React Helmet for dynamic meta tags"
+import Latestjobs from '../TypeCards/Latestjobs';
+import RelatedJobs from '../TypeCards/RelatedJobs'
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -223,6 +225,52 @@ const JobDetails = () => {
                 Apply Now
               </button>
             </div>
+
+            <RelatedJobs/>
+            
+             {/* Social Media Buttons */}
+          <div className="social-button-container">
+            <h4>Join Our WhatsApp Group :-</h4>
+            <a
+              href="https://wa.me/your-whatsapp-number"
+              className="social-button whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-whatsapp"></i> WhatsApp
+            </a>
+
+            <h4>Join Our Telegram Group :-</h4>
+            <a
+              href="https://t.me/your-telegram-group"
+              className="social-button telegram-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-telegram"></i> Telegram
+            </a>
+
+            <h4>Follow Our Instgram page :-</h4>
+
+            <a
+              href="https://www.instagram.com/your-instagram-profile"
+              className="social-button instagram-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-instagram"></i> Instagram
+            </a>
+
+            <h4>Subscriber Our Youtube Channel :-</h4>
+            <a
+              href="https://www.youtube.com/channel/your-youtube-channel"
+              className="social-button youtube-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-youtube"></i> YouTube
+            </a>
+          </div>
           </div>
         </div>
       </div>
