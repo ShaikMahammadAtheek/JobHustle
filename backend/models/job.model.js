@@ -1,6 +1,29 @@
 //latest code ...............
 const mongoose = require('mongoose');
 
+
+// const jobDescriptionSchema = new mongoose.Schema({
+//   workplaceType: { type: String, required: true },
+//   location: { type: String, required: true },
+//   positionTitle: { type: String, required: true },
+//   jobFunction: { type: String, required: true },
+//   jobType: { type: String, required: true },  // Type: Off-Campus, Internship, Fresher, Experience
+//   minEducation: { type: String, required: true },
+//   mainStream: { type: String, required: true },
+//   minExperience: { type: String, required: true },
+//   description: { type: String, required: true },
+//   lastdate: { type: String, required: true },
+//   responsibilities: [{ type: String }],
+//   qualifications: [{ type: String }],
+//   benefits: [{ type: String }],
+//   headings: [  // Array of sections under the topic
+//     {
+//         heading: String,
+//         content: [{ type: String }]
+//     }
+// ]
+// });
+
 // Job Description Schema
 const jobDescriptionSchema = new mongoose.Schema({
   workplaceType: { type: String, required: true },

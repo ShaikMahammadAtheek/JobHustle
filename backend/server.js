@@ -42,12 +42,12 @@ connection.once('open', () => {
 
 
 // // Middleware
-// app.use(cors());
+app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
 
-app.use(cors({origin: process.env.CORS_ORIGIN}));
+// app.use(cors({origin: process.env.CORS_ORIGIN}));
 
 
 // Allow CORS for specific origins (you can update the array of allowed origins as needed)
@@ -543,12 +543,12 @@ app.get('/sitemap.xml', async (req, res) => {
     const jobs = await Job.find().select('_id createdAt location');
     
     // Create URLs for each city
-    const cityUrls = cities.map(city => ({
-      loc: `${hostname}/job-by-city/${city}`,
-      lastmod: new Date().toISOString(),
-      changefreq: 'daily',  // You can adjust this depending on the update frequency of cities
-      priority: 0.7,        // Set an appropriate priority for these URLs
-    }));
+    // const cityUrls = cities.map(city => ({
+    //   loc: `${hostname}/job-by-city/${city}`,
+    //   lastmod: new Date().toISOString(),
+    //   changefreq: 'daily',  // You can adjust this depending on the update frequency of cities
+    //   priority: 0.7,        // Set an appropriate priority for these URLs
+    // }));
 
     // Create URLs for individual job pages
     const jobUrls = jobs.map(job => ({
@@ -565,11 +565,11 @@ app.get('/sitemap.xml', async (req, res) => {
       { loc: `${hostname}/internships`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
       { loc: `${hostname}/freshers`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
       { loc: `${hostname}/experience`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
-      { loc: `${hostname}/cities`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.6 },
+      // { loc: `${hostname}/cities`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.6 },
     ];
 
     // Combine static URLs, job URLs, and city URLs
-    const allUrls = [...staticUrls, ...jobUrls, ...cityUrls];
+    const allUrls = [...staticUrls, ...jobUrls];
 
     // Generate the XML Sitemap format
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
