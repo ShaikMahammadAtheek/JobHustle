@@ -42,12 +42,12 @@ connection.once('open', () => {
 
 
 // // Middleware
-app.use(cors());
+// app.use(cors());
 
 // app.use(cors({ origin: 'https://jobshustle.onrender.com' }));
 
 
-// app.use(cors({origin: process.env.CORS_ORIGIN}));
+app.use(cors({origin: process.env.CORS_ORIGIN}));
 
 
 // Allow CORS for specific origins (you can update the array of allowed origins as needed)
