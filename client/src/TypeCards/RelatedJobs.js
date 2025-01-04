@@ -12,7 +12,7 @@ const Experiencess = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/experience`); // Fetch sorted jobs
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/home`); // Fetch sorted jobs
                 setJobs(response.data); // Set the jobs in state
             } catch (error) {
                 console.error('Error fetching jobs:', error);
