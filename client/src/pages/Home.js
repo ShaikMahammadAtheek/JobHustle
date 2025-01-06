@@ -10,7 +10,7 @@ import Internshipss from '../TypeCards/Internshipss';
 import Fresherss from '../TypeCards/Fresherss';
 import Experiencess from '../TypeCards/Experiencess';
 import Welcome from '../components/Welcome'
-
+// import Latestjobs from '../TypeCards/Latestjobs';
 const Home = () => {
   const [jobs, setJobs] = useState([]); // State for storing jobs
   const [loading, setLoading] = useState(true); // Loading state
@@ -109,11 +109,11 @@ const Home = () => {
 
       <Welcome />
       <div>
-        <h1 style={{ "color": "red" }} id='mainhomeheading'>Let's Search Your Career Jobs From Here!...</h1>
+        <h1 style={{ "color": "red" }} id='mainhomeheading'>Explore Latest Jobs</h1>
 
         {/* Section to show all jobs */}
         <section className="job-cards">
-          <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1>
+          {/* <h1 style={{ textAlign: 'center' }}>Explore All Latest Jobs</h1> */}
 
           {loading ? (
             <Spinner /> // Show spinner while loading
@@ -134,6 +134,7 @@ const Home = () => {
           <Internshipss />
           <OffCampuss />
         </div>
+        {/* <Latestjobs/> */}
       </div>
     </>
   );
