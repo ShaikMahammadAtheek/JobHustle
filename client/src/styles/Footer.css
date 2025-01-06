@@ -120,7 +120,10 @@ footer {
 i {
     color: white;
 }
-
+.footer-nav{
+    display: flex;
+    justify-content: center;
+}
 .footer-nav-item {
     margin: 0 15px;
     color: rgb(232, 148, 22);
@@ -185,5 +188,9 @@ i {
 
     .footer-copyright {
         font-size: 0.7rem; /* Further reduce font size */
+    }
+    .footer-nav{
+        flex-direction: column;
+        gap: 5px;
     }
 }
