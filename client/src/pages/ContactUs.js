@@ -10,12 +10,15 @@ const ContactUs = () => {
       </header>
 
       <section className="contact-us-info-section">
-        <h2>Our Contact Information</h2>
+        <h2>JobHustles Contact Information</h2>
         <p>
           <strong>Email:</strong> atheeks579@gmail.com
         </p>
         <p>
           <strong>Phone:</strong> +91 7981250043
+        </p>
+        <p>
+          <strong>Website:</strong> jobhustles.com
         </p>
         {/* <p>
           <strong>Address:</strong> 123 JobHustle Lane, Career City, 56789

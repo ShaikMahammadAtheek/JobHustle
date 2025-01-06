@@ -15,6 +15,8 @@ import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import './App.css'; 
 // import NotFound from './components/NotFound';
 // import { Helmet } from 'react-helmet';
@@ -105,6 +107,9 @@ const App = () => {
         {/* <Route component={NotFound} /> */}
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
+
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         
       </Routes>
       <Footer />

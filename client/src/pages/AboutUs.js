@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <div className="about-us-container">
       <p>
-        Welcome to <strong>JobHustle</strong>! We are committed to bridging the gap
+        Welcome to <strong>JobHustles</strong> We are committed to bridging the gap
         between job seekers and their dream careers. Our platform provides
         regular updates on <strong>Freshers Jobs</strong>, <strong>Experience Jobs</strong>, <strong>Off-Campus Drives</strong>,
         <strong> Walk-ins</strong>, and opportunities across <strong>IT</strong>, <strong>Non-IT</strong>, and many other sectors.

@@ -28,6 +28,8 @@ const Footer = () => {
             <div className="footer-nav">
             <Link to="/about-us" className="footer-nav-item">AboutUs</Link>
             <Link to="/contact-us" className="footer-nav-item">Contact</Link>
+            <Link to="/privacy-policy" className="footer-nav-item">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="footer-nav-item">Terms of Service</Link>
             </div>
             <br />
             <div className="footer-about">
