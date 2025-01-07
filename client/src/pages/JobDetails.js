@@ -232,7 +232,7 @@ const JobDetails = () => {
           <div className="social-button-container">
             <h4>Join Our WhatsApp Group :-</h4>
             <a
-              href="https://wa.me/your-whatsapp-number"
+              href="https://www.whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P"
               className="social-button whatsapp-button"
               target="_blank"
               rel="noopener noreferrer"
@@ -242,7 +242,7 @@ const JobDetails = () => {
 
             <h4>Join Our Telegram Group :-</h4>
             <a
-              href="https://t.me/your-telegram-group"
+              href="https://t.me/Jobs_hustle"
               className="social-button telegram-button"
               target="_blank"
               rel="noopener noreferrer"
@@ -253,7 +253,7 @@ const JobDetails = () => {
             <h4>Follow Our Instgram page :-</h4>
 
             <a
-              href="https://www.instagram.com/your-instagram-profile"
+              href="https://www.instagram.com/jobhustles__jobupdates?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw="
               className="social-button instagram-button"
               target="_blank"
               rel="noopener noreferrer"
@@ -263,7 +263,7 @@ const JobDetails = () => {
 
             <h4>Subscriber Our Youtube Channel :-</h4>
             <a
-              href="https://www.youtube.com/channel/your-youtube-channel"
+              href="https://youtube.com/@jobhustles?si=SuIG9pY7WkVWiiza"
               className="social-button youtube-button"
               target="_blank"
               rel="noopener noreferrer"
