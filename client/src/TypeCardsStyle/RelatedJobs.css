@@ -1,7 +1,8 @@
 /* Base styles */
 .gap{
     margin-top: 30px;
-    font-size: 50px;
+    font-size: 35px;
+    text-align: center;
 }
 .offcampus-container {
     margin-bottom: 51px;
@@ -73,7 +74,9 @@
     font-size: 20px;
 }
 
-
+.jobtypecol{
+    color: black;
+}
 /* Responsive Styles */
 
 /* For screens up to 1200px */

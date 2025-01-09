@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../styles/JobDetails.css';
 import { Helmet } from 'react-helmet'; // Import React Helmet for dynamic meta tags"
-import Latestjobs from '../TypeCards/Latestjobs';
+// import Latestjobs from '../TypeCards/Latestjobs';
 import RelatedJobs from '../TypeCards/RelatedJobs'
 
 const JobDetails = () => {
@@ -232,7 +232,7 @@ const JobDetails = () => {
             
              {/* Social Media Buttons */}
           <div className="social-button-container">
-            <h4>Join Our WhatsApp Group :-</h4>
+            <h4 className='whatsappcolor'>Join Our WhatsApp Group :-</h4>
             <a
               href="https://www.whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P"
               className="social-button whatsapp-button"
@@ -242,7 +242,7 @@ const JobDetails = () => {
               <i className="fab fa-whatsapp"></i> WhatsApp
             </a>
 
-            <h4>Join Our Telegram Group :-</h4>
+            <h4 className='telegramcolor'>Join Our Telegram Group :-</h4>
             <a
               href="https://t.me/Jobs_hustle"
               className="social-button telegram-button"
@@ -252,7 +252,7 @@ const JobDetails = () => {
               <i className="fab fa-telegram"></i> Telegram
             </a>
 
-            <h4>Follow Our Instgram page :-</h4>
+            <h4 className='instacolor'>Follow Our Instgram page :-</h4>
 
             <a
               href="https://www.instagram.com/jobhustles__jobupdates?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw="
@@ -263,7 +263,7 @@ const JobDetails = () => {
               <i className="fab fa-instagram"></i> Instagram
             </a>
 
-            <h4>Subscriber Our Youtube Channel :-</h4>
+            <h4 className='youtubecolor'>Subscriber Our Youtube Channel :-</h4>
             <a
               href="https://youtube.com/@jobhustles?si=SuIG9pY7WkVWiiza"
               className="social-button youtube-button"

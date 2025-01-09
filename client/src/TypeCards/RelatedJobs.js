@@ -40,7 +40,7 @@ const Experiencess = () => {
                             <div className="job-type-cards" key={job._id}>
                                 <Link to={`/job/${job._id}`} className='job-type-link'>
                                     {job.imageUrl && <img className="job-type-image" src={job.imageUrl} alt={job.title} />}
-                                    <h4 className="job-type-title">{job.title}</h4>
+                                    <h4 className="job-type-title jobtypecol">{job.title}</h4>
                                 </Link>
                             </div>
                         ))}
