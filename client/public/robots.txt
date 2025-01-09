@@ -2,4 +2,7 @@
 User-agent: *
 Disallow:
 
+User-agent: Mediapartners-Google
+Disallow:
+
 Sitemap: https://jobhustles.com/sitemap.xml
