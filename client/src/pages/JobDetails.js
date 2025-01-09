@@ -225,8 +225,10 @@ const JobDetails = () => {
                 Apply Now
               </button>
             </div>
-
-            <RelatedJobs/>
+          </div>
+        </div>
+      </div>
+      <RelatedJobs/>
             
              {/* Social Media Buttons */}
           <div className="social-button-container">
@@ -271,9 +273,6 @@ const JobDetails = () => {
               <i className="fab fa-youtube"></i> YouTube
             </a>
           </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
