@@ -566,6 +566,11 @@ app.get('/sitemap.xml', async (req, res) => {
       { loc: `${hostname}/freshers`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
       { loc: `${hostname}/experience`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
       // { loc: `${hostname}/cities`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.6 },
+      { loc: `${hostname}/about-us`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/contact-us`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/privacy-policy`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/terms-of-service`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+      { loc: `${hostname}/support`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     ];
 
     // Combine static URLs, job URLs, and city URLs
