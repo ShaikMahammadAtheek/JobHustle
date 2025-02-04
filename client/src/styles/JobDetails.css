@@ -560,3 +560,19 @@ p {
     font-size: 0.9rem; /* Adjust font size */
   }
 }
+
+
+/* src/styles/JobDetails.css */
+@media (max-width: 768px) {
+  .sidebar-left-ad,
+  .sidebar-right-ad {
+    display: none; /* Hide sidebar ads on mobile/tablet */
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar-left-ad,
+  .sidebar-right-ad {
+    display: block; /* Show sidebar ads on desktop */
+  }
+}
