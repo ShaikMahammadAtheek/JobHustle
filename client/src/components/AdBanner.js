@@ -76,40 +76,61 @@
 
 
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const AdBanner = ({ adClient, adSlot, adStyle }) => {
+const AdBanner = ({ adClient, adSlot, adStyle, allowAutoAd }) => {
   const adRef = useRef(null);
-  const hasAdLoaded = useRef(false); // Prevents multiple ad pushes
+  const hasAdLoaded = useRef(false);
+  const [isAutoAd, setIsAutoAd] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.adsbygoogle && adRef.current) {
-        const adContainer = adRef.current;
+    if (!window.adsbygoogle) {
+      console.error("Google AdSense script not loaded.");
+      return;
+    }
 
-        // Ensure the ad container has a width before loading the ad
-        if (adContainer.offsetWidth > 0 && !hasAdLoaded.current) {
-          try {
-            window.adsbygoogle.push({});
-            hasAdLoaded.current = true; // Mark this ad slot as loaded
-            console.log(`Ad loaded for slot: ${adSlot}`);
-            clearInterval(interval); // Stop checking after successful load
-          } catch (e) {
-            console.error("AdSense error:", e);
-          }
-        }
+    const loadAd = () => {
+      if (!adRef.current) return;
+
+      // Wait until the ad container has a valid width
+      if (adRef.current.offsetWidth === 0) {
+        setTimeout(loadAd, 500); // Retry loading ad
+        return;
       }
-    }, 500); // Check every 500ms
 
-    return () => clearInterval(interval);
-  }, [adSlot]); // Runs only when `adSlot` changes
+      // If auto ads already placed, do not load manual ad
+      if (!hasAdLoaded.current) {
+        try {
+          window.adsbygoogle.push({});
+          hasAdLoaded.current = true;
+          console.log(`✅ Ad loaded for slot: ${adSlot}`);
+        } catch (e) {
+          console.error("AdSense error:", e);
+        }
+      } else {
+        console.warn(`⚠️ Ad slot ${adSlot} already loaded, skipping push`);
+      }
+    };
+
+    // Allow auto ads only if explicitly allowed
+    if (allowAutoAd) {
+      setIsAutoAd(true);
+    }
+
+    loadAd();
+  }, [adSlot, allowAutoAd]);
 
   return (
-    <div style={{ margin: "20px 0", textAlign: "center", ...adStyle }}>
+    <div style={{ textAlign: "center", ...adStyle }}>
       <ins
         className="adsbygoogle"
         ref={adRef}
-        style={{ display: "block", minWidth: "300px", height: "250px" }} // Ensures proper width
+        style={{
+          display: "block",
+          minWidth: "300px",
+          height: "250px",
+          backgroundColor: isAutoAd ? "#f5f5f5" : "transparent",
+        }}
         data-ad-client={adClient}
         data-ad-slot={adSlot}
         data-ad-format="auto"
