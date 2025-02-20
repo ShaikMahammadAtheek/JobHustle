@@ -28,6 +28,8 @@ const Experiencess = () => {
         
         <div className="offcampus-container">
         <h2 className='gap'>Latest Trending Jobs</h2>
+        
+        <AdBanner adClient="ca-pub-7505662209991654" adSlot="6296919840" />
         <div className="inner-container">
         
             <section className="offcampus-section">
