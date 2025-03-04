@@ -361,6 +361,7 @@ const JobDetails = () => {
 
 
       <RelatedJobs />
+      <p>............................................................................................</p>
 
       {/* Social Media Buttons */}
       {/* Add Social Media links here */}
