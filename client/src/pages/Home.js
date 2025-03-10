@@ -109,7 +109,7 @@ const Home = () => {
 
       <Welcome />
       <div>
-        <h1 style={{ "color": "red" }} id='mainhomeheading'>Explore Latest Jobs</h1>
+        <h1 style={{ "color": "red" }} id='mainhomeheading'>Explore Latest Trending Jobs</h1>
 
         {/* Section to show all jobs */}
         <section className="job-cards">
