@@ -324,6 +324,7 @@ const JobDetails = () => {
 
             <h4>Additional Information:</h4>
             <AdBanner adClient="ca-pub-7505662209991654" adSlot="4988304071" />
+            <AdBanner adClient="ca-pub-7505662209991654" adSlot="6296919840" />
             <div className="headings-section">
               {jobDescription.headings?.length > 0 ? (
                 jobDescription.headings.map((headingItem, index) => (
